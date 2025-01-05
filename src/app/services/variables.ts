@@ -1,0 +1,1 @@
+export const API_GEN = "https://hogeroserver-production.up.railway.app";

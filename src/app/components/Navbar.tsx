@@ -7,7 +7,7 @@ import { useEffect } from "react";
 const links = [
     {
         name: "Inicio",
-        href: "",
+        href: "/",
         icon: ""
     },
     {
@@ -29,7 +29,7 @@ export default function Navbar() {
     return (
         <nav className={`${style.navbar} navbar navbar-expand-lg`}>
             <div className="container-fluid">
-                <Link className="navbar-brand" href="">HOGERO</Link>
+                <Link className="navbar-brand" href="/">HOGERO</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
