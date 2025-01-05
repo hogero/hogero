@@ -1,4 +1,4 @@
-interface Agendas {
+export interface Agendas {
     id: number;
     nombre: string;
     telefono: string;

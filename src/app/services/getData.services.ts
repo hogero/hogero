@@ -40,23 +40,12 @@ export class DataService {
     return this.request(url, "DELETE", data);
   }
 
-  requestGetApis(url: string, headers: any) {
-    return this.request(url, "GET", null, headers);
-  }
-
-  requestPostApis(url: string, headers: any, data?: any) {
-    return this.request(url, "POST", data, headers);
-  }
-  requestDeteApis(url: string, headers: any, data?: any) {
-    return this.request(url, "DELETE", data, headers);
-  }
-
-  private async request(url: string, method: string, body?: any, headersM?: any): Promise<ResponseInterface> {
-    let resReq: ResponseInterface = {
+  private async request(url: string, method: string, body?: any): Promise<ResponseInterface> {
+    const resReq: ResponseInterface = {
       url: url,
       headers: undefined
     };
-    let initReq: RequestInit = {
+    const initReq: RequestInit = {
       method: method,
       headers: this.headers,
     };
@@ -65,12 +54,9 @@ export class DataService {
       initReq.body = JSON.stringify(body);
       resReq.body = body;
     }
-    if (headersM) {
-      initReq.headers = headersM
-    }
 
     try {
-      let request = new Request(url, initReq);
+      const request = new Request(url, initReq);
       const response = await fetch(request)
       resReq.status = response.status;
       resReq.ok = response.ok;
@@ -78,7 +64,7 @@ export class DataService {
       if (response.ok)
         try {
           resReq.data = await response.json();
-        } catch (e) {
+        } catch {
           resReq.data = response
         }
       else {

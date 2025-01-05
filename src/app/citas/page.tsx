@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { DataService } from "../services/getData.services";
 import { SpinnerComponent } from '../components/SpinnerComponent';
 import { API_GEN } from "../services/variables";
+import { Agendas } from "../services/interfaces";
 
 export default function Home() {
   const dataService = new DataService();
