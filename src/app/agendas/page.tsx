@@ -49,23 +49,25 @@ export default function Page() {
   }, []);
 
   const CustomInput = forwardRef<HTMLInputElement, React.HTMLProps<HTMLInputElement>>(
-    ({ value, onClick }: any, ref: any) => (
-      <button
-        type="button"
-        onClick={onClick}
-        ref={ref as React.Ref<HTMLButtonElement>}
-        className=""
-        style={{
-          padding: "8px 12px",
-          border: "1px solid #ccc",
-          borderRadius: "4px",
-          background: "white",
-          cursor: "pointer",
-        }}
-      >
-        {value || "Selecciona una fecha y hora"}
-      </button>
-    )
+    function CustomInput({ value, onClick }: any, ref: any) {
+      return (
+        <button
+          type="button"
+          onClick={onClick}
+          ref={ref as React.Ref<HTMLButtonElement>}
+          className=""
+          style={{
+            padding: "8px 12px",
+            border: "1px solid #ccc",
+            borderRadius: "4px",
+            background: "white",
+            cursor: "pointer",
+          }}
+        >
+          {value || "Selecciona una fecha y hora"}
+        </button>
+      );
+    }
   );
 
   const getExcludedTimes = (date: Date | null) => {
@@ -93,7 +95,7 @@ export default function Page() {
           minDate={todayToNDays(0)}
           id="validationCustom01"
           required
-        />     
+        />
       </div>}
   </>);
 
