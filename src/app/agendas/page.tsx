@@ -92,7 +92,7 @@ export default function Page() {
           minTime={setHours(0, selectedDate?.toLocaleDateString() == new Date().toLocaleDateString() ? new Date().getHours() + 3 : 9)} // Hora mínima: 09:00
           maxTime={setHours(0, 17)}
           excludeTimes={getExcludedTimes(selectedDate)}
-          minDate={todayToNDays(0)}
+          minDate={todayToNDays(1)}
           id="validationCustom01"
           required
         />
