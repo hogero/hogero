@@ -17,7 +17,7 @@ const links = [
     },
     {
         name: "Agendar cita",
-        href: "/citas",
+        href: "/agendas",
         icon: ""
     }
 ]

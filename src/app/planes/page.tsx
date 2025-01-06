@@ -1,4 +1,4 @@
-export default function Planes() {
+export default function Page() {
     return (
       <div className="">
         Planes

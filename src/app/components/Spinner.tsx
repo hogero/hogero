@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export const SpinnerComponent = (props: { message?: string }) => {
+export const Spinner = (props: { message?: string }) => {
   const { message } = props;
   const css = `
         .lds-ring {
