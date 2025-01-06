@@ -89,7 +89,7 @@ export default function Page() {
           placeholderText="Selecciona una fecha y hora"
           customInput={<CustomInput />}
           timeCaption="Hora"
-          minTime={setHours(0, selectedDate?.toLocaleDateString() == new Date().toLocaleDateString() ? new Date().getHours() + 3 : 9)} // Hora mínima: 09:00
+          minTime={setHours(0, 9)} // Hora mínima: 09:00
           maxTime={setHours(0, 17)}
           excludeTimes={getExcludedTimes(selectedDate)}
           minDate={todayToNDays(1)}
