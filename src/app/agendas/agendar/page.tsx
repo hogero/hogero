@@ -1,5 +1,5 @@
 "use client"
-import { forwardRef, Suspense, useEffect, useState } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import { DataService } from "../../services/getData.services";
 import { Spinner } from '../../components/Spinner';
 import { API_GEN } from "../../services/variables";
@@ -145,7 +145,7 @@ export default function Page() {
   }
 
 
-  return (<Suspense>
+  return (<>
     {loading.loading ?
       <Spinner message={loading.message} /> :
       <form onSubmit={handleSubmit} className={styles.formContainer}>
@@ -244,6 +244,6 @@ export default function Page() {
         </button>
       </form>
     }
-  </Suspense>);
+  </>);
 
 }
