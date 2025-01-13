@@ -13,17 +13,17 @@
   --text-color: #333333;
   --error-color: #d9534f;
 
+  --primary: #42706e;
+  --highlight: #f6dd7b;
+  --neutral-light: #e8f0ef;
+  --neutral-dark: #2f4f4f;
+  --text-dark: #1e1e1e;
+  --text-muted: #6c757d;
+
   --toastify-color-info: #8cb0c8 !important;
   --toastify-color-success: #67a069 !important;
   --toastify-color-warning: #f6dd7b !important;
   --toastify-color-error: #d9534f !important;
-
-  --primary: #42706e; /* Color principal */
-  --highlight: #f6dd7b; /* Resalta contenido importante */
-  --neutral-light: #e8f0ef; /* Fondo suave */
-  --neutral-dark: #2f4f4f; /* Contraste */
-  --text-dark: #1e1e1e; /* Texto principal */
-  --text-muted: #6c757d; /* Texto secundario */
 }
 
 *,
@@ -51,6 +51,7 @@ body {
     background-color: var(--background);
     color: var(--main-color);
   }
+
   .Toastify__toast-theme--colored.Toastify__toast--info {
     background-color: var(--background);
     color: var(--main-color);

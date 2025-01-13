@@ -26,6 +26,11 @@ const Navbar: React.FC = () => {
             name: "Agendar cita",
             href: "/agendas/cita",
             icon: ""
+        },
+        {
+            name: "Contactanos",
+            href: "/contacto",
+            icon: ""
         }
     ];
 
