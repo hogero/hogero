@@ -1,5 +1,5 @@
 "use client"
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { DataService } from "../services/getData.services";
 import { Spinner } from '../components/Spinner';
 import { API_GEN } from "../services/variables";
@@ -71,7 +71,7 @@ export default function Page() {
     setAgendaId(data);
   }
 
-  return (<Suspense>
+  return (<>
     {!existsIdParam && <form onSubmit={handleSubmit} className={styles.formContainer}>
       <div className={styles.formSearch}>
         <input
@@ -127,6 +127,6 @@ export default function Page() {
     </>
     }
     {loading.loading && <Spinner message={loading.message} />}
-  </Suspense>);
+  </>);
 
 }

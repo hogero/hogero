@@ -1,7 +1,7 @@
 :root {
-  --s-background: #c6c7bf;
-  --background: #eeeeee;
-  --main-color: #6a6b2c;
+  --s-background: #91B0A0;
+  --main-color: #676e41;
+  --background: #e6e6e6;
   --second-color: #97b09d;
   --third-color: #cde1d8;
   --last-color: #7bba9d;
@@ -17,6 +17,13 @@
   --toastify-color-success: #67a069 !important;
   --toastify-color-warning: #f6dd7b !important;
   --toastify-color-error: #d9534f !important;
+
+  --primary: #42706e; /* Color principal */
+  --highlight: #f6dd7b; /* Resalta contenido importante */
+  --neutral-light: #e8f0ef; /* Fondo suave */
+  --neutral-dark: #2f4f4f; /* Contraste */
+  --text-dark: #1e1e1e; /* Texto principal */
+  --text-muted: #6c757d; /* Texto secundario */
 }
 
 *,

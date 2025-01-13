@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { lora, nunito } from "./fonts";
 import Navbar from "./components/Navbar";
-import style from "./styles.module.css";
+import style from "./inicio.module.css";
 import ToastProvider from "./components/ToastProvider";
 import { Suspense } from "react";
 
