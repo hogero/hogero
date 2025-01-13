@@ -4,6 +4,7 @@ import { lora, nunito } from "./fonts";
 import Navbar from "./components/Navbar";
 import style from "./styles.module.css";
 import ToastProvider from "./components/ToastProvider";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "HOGERO",
@@ -18,10 +19,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${nunito.className} antialiased container`}>
-        <ToastProvider/>
+        <ToastProvider />
         <Navbar />
         <div className={style.generalInfo}>
-          {children}
+          <Suspense>
+            {children}
+          </Suspense>
         </div>
       </body>
     </html>
