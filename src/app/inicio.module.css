@@ -6,9 +6,10 @@
     color: var(--text-dark);
     margin: auto;
     max-width: 950px;
-    h3{
-        margin: 0;
-    }
+}
+
+.container h3 {
+    margin: 0;
 }
 
 .frase {
@@ -81,7 +82,7 @@
     color: var(--text-muted);
 }
 
-.body{
+.body {
     text-align: left;
 }
 
