@@ -12,6 +12,11 @@
   --border-color: #dcdcdc;
   --text-color: #333333;
   --error-color: #d9534f;
+
+  --toastify-color-info: #8cb0c8 !important;
+  --toastify-color-success: #67a069 !important;
+  --toastify-color-warning: #f6dd7b !important;
+  --toastify-color-error: #d9534f !important;
 }
 
 *,
@@ -33,6 +38,15 @@ body {
 
   .react-datepicker__current-month {
     text-transform: capitalize;
+  }
+
+  .Toastify__toast-theme--colored.Toastify__toast--default {
+    background-color: var(--background);
+    color: var(--main-color);
+  }
+  .Toastify__toast-theme--colored.Toastify__toast--info {
+    background-color: var(--background);
+    color: var(--main-color);
   }
 }
 

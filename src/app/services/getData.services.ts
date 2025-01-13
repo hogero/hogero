@@ -1,3 +1,5 @@
+import { getJSON } from "./utils";
+
 export interface ResponseInterface<T = any> {
   url: string;
   body?: any;
@@ -62,13 +64,9 @@ export class DataService {
       resReq.ok = response.ok;
       resReq.headers = response.headers;
       if (response.ok)
-        try {
-          resReq.data = await response.json();
-        } catch {
-          resReq.data = response
-        }
+          resReq.data = await getJSON(response);
       else {
-        resReq.error = response
+        resReq.error = await getJSON(response);
       }
     } catch (error) {
       resReq.status = 400

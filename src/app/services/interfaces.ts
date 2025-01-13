@@ -1,5 +1,4 @@
 export interface AgendasInt {
-    id: number;
     nombre: string;
     telefono: string;
     email: string;
@@ -7,8 +6,14 @@ export interface AgendasInt {
     fechaFin: string;
     duracion: number;
     direccion: string;
+    confirmacion?: boolean;
 }
 
 export interface DictT<T> {
     [date: string]: T
+}
+
+export interface LoadingData {
+    loading: boolean;
+    message?: string;
 }

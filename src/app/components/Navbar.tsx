@@ -18,8 +18,13 @@ const Navbar: React.FC = () => {
             icon: ""
         },
         {
-            name: "Agendar cita",
+            name: "Consultar cita",
             href: "/agendas",
+            icon: ""
+        },
+        {
+            name: "Agendar cita",
+            href: "/agendas/cita",
             icon: ""
         }
     ];
@@ -38,7 +43,7 @@ const Navbar: React.FC = () => {
                 <ul className={`${styles.navLinks} ${isOpen ? styles.navOpen : ""}`}>
                     {links.map((link, index) => (
                         <li key={index}>
-                            <Link href={link.href}>{link.name}</Link>
+                            <Link href={link.href} onClick={toggleMenu}>{link.name}</Link>
                         </li>
                     ))}
                 </ul>
