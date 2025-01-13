@@ -9,6 +9,6 @@ export interface AgendasInt {
     direccion: string;
 }
 
-export interface DictDates {
-    [date: string]: Date[]
+export interface DictT<T> {
+    [date: string]: T
 }

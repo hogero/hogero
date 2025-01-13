@@ -3,28 +3,35 @@ import { forwardRef, useEffect, useState } from "react";
 import { DataService } from "../services/getData.services";
 import { Spinner } from '../components/Spinner';
 import { API_GEN } from "../services/variables";
-import { AgendasInt, DictDates } from "../services/interfaces";
+import { AgendasInt, DictT } from '../services/interfaces';
 import { todayToNDays } from "../services/utils";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { es } from "date-fns/locale/es";
 import { setHours } from "date-fns";
+import styles from "../styles/agendas.module.css";
+import useMessage from "../hooks/useMessage";
+import MessageBox from '../components/MessagesBox';
 
 export default function Page() {
   const dataService = new DataService();
+  const initAgenda: AgendasInt = {
+    direccion: "", duracion: 0, email: "", fechaFin: "", fechaInicio: "", id: 0, nombre: "", telefono: ""
+  }
   const [loading, setLoading] = useState<boolean>(true);
-  const [agenda, setAgenda] = useState<AgendasInt>({
-    direccion: "", duracion: 0, email: "", fechaFin: "", fechaInicio: todayToNDays(1).toISOString(), id: 0, nombre: "", telefono: ""
-  });
+  const [agenda, setAgenda] = useState<AgendasInt>({ ...initAgenda });
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const [excludeDates, setExcludeDates] = useState<DictDates>({});
+  const [excludeDates, setExcludeDates] = useState<DictT<Date[]>>({});
+  const { showMessage } = useMessage();
+
+
 
   useEffect(() => {
     const dataFetch = async () => {
       const reqAgendas = await dataService.requestGet(`${API_GEN}/agendas`);
       if (reqAgendas.ok) {
         const agendas: AgendasInt[] = reqAgendas.data;
-        const objAgendas: DictDates = {};
+        const objAgendas: DictT<Date[]> = {};
         agendas.forEach(a => {
           const fechaInicio = new Date(a.fechaInicio);
           const fechasDuracion: Date[] = [];
@@ -55,14 +62,7 @@ export default function Page() {
           type="button"
           onClick={onClick}
           ref={ref as React.Ref<HTMLButtonElement>}
-          className=""
-          style={{
-            padding: "8px 12px",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-            background: "white",
-            cursor: "pointer",
-          }}
+          className={styles.input}
         >
           {value || "Selecciona una fecha y hora"}
         </button>
@@ -74,29 +74,162 @@ export default function Page() {
     return date ? excludeDates[date.toLocaleDateString()] : [];
   };
 
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+
+  // Validaciones
+  const validate = () => {
+    const newErrors: { [key: string]: string } = {};
+
+    if (!agenda.nombre.trim()) {
+      newErrors.nombre = "El nombre es obligatorio.";
+    }
+
+    if (!agenda.direccion.trim()) {
+      newErrors.direccion = "La dirección es obligatoria.";
+    }
+
+    if (!agenda.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+      newErrors.email = "El correo electrónico no es válido.";
+    }
+
+    if (!agenda.telefono.match(/^\d{10}$/)) {
+      newErrors.telefono = "El teléfono debe contener 10 dígitos.";
+    }
+
+    if (agenda.duracion !== 1 && agenda.duracion !== 2) {
+      newErrors.duracion = "La duración debe ser Básica o Extendida";
+    }
+
+    if (!agenda.fechaInicio) {
+      newErrors.fechaInicio = "La fecha de inicio es obligatoria.";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+
+    // Si el input es teléfono, solo permitir números
+    if (name === "telefono") {
+      const numericValue = value.replace(/[^0-9]/g, "");
+      setAgenda({ ...agenda, [name]: numericValue });
+    } else if (name === "duracion") {
+      setAgenda({ ...agenda, [name]: Number(value) });
+    } else {
+      setAgenda({ ...agenda, [name]: value });
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (validate()) {
+      console.log("Formulario enviado:", agenda);
+      // Aquí puedes manejar el envío, como enviar los datos a un servidor.
+    }
+  };
+
+
   return (<>
     {loading ?
       <Spinner message="Obteniendo días disponibles" /> :
-      <div className="form-agenda">
-        <DatePicker
-          selected={selectedDate}
-          onChange={(date: Date | null) => { setSelectedDate(date); setAgenda({ ...agenda, fechaInicio: date?.toISOString()! }) }}
-          showTimeSelect
-          locale={es}
-          dateFormat="Pp"
-          timeFormat="HH:mm"
-          timeIntervals={60}
-          placeholderText="Selecciona una fecha y hora"
-          customInput={<CustomInput />}
-          timeCaption="Hora"
-          minTime={setHours(0, 9)} // Hora mínima: 09:00
-          maxTime={setHours(0, 17)}
-          excludeTimes={getExcludedTimes(selectedDate)}
-          minDate={todayToNDays(1)}
-          id="validationCustom01"
-          required
-        />
-      </div>}
+      <form onSubmit={handleSubmit} className={styles.formContainer}>
+        <div className={styles.formGroup}>
+          <label className={styles.label}>Nombre</label>
+          <input
+            type="text"
+            name="nombre"
+            value={agenda.nombre}
+            onChange={handleChange}
+            className={styles.input}
+            placeholder="Escribe tu nombre"
+          />
+          {errors.nombre && <p className={styles.error}>{errors.nombre}</p>}
+        </div>
+
+        <div className={styles.formGroup}>
+          <label className={styles.label}>Email</label>
+          <input
+            type="email"
+            name="email"
+            value={agenda.email}
+            onChange={handleChange}
+            className={styles.input}
+            placeholder="correo@ejemplo.com"
+          />
+          {errors.email && <p className={styles.error}>{errors.email}</p>}
+        </div>
+
+        <div className={styles.formGroup}>
+          <label className={styles.label}>Teléfono</label>
+          <input
+            type="text"
+            name="telefono"
+            value={agenda.telefono}
+            onChange={handleChange}
+            maxLength={10}
+            className={styles.input}
+            placeholder="1234567890"
+          />
+          {errors.telefono && <p className={styles.error}>{errors.telefono}</p>}
+        </div>
+
+        <div className={styles.formGroup}>
+          <label className={styles.label}>Dirección</label>
+          <input
+            type="text"
+            name="direccion"
+            value={agenda.direccion}
+            onChange={handleChange}
+            className={styles.input}
+            placeholder="Escribe tu dirección (Calle,Colonia,CP,Ciudad)"
+          />
+          {errors.direccion && <p className={styles.error}>{errors.direccion}</p>}
+        </div>
+
+        <div className={styles.formGroup}>
+          <label className={styles.label}>Fecha Agenda</label>
+          <DatePicker
+            selected={selectedDate}
+            onChange={(date: Date | null) => { setSelectedDate(date); setAgenda({ ...agenda, fechaInicio: date?.toISOString()! }) }}
+            showTimeSelect
+            locale={es}
+            dateFormat="Pp"
+            timeFormat="HH:mm"
+            timeIntervals={60}
+            placeholderText="Selecciona una fecha y hora"
+            customInput={<CustomInput />}
+            timeCaption="Hora"
+            minTime={setHours(0, 9)} // Hora mínima: 09:00
+            maxTime={setHours(0, 17)}
+            excludeTimes={getExcludedTimes(selectedDate)}
+            minDate={todayToNDays(1)}
+            className={styles.label}
+          />
+          {errors.fechaInicio && <p className={styles.error}>{errors.fechaInicio}</p>}
+        </div>
+
+        <div className={styles.formGroup}>
+          <label className={styles.label}>Sesión</label>
+          <select
+            name="duracion"
+            value={agenda.duracion}
+            onChange={handleChange}
+            className={styles.select}
+          >
+            <option value={0}>Sesión</option>
+            <option value={1}>Básica</option>
+            <option value={2}>Extendida</option>
+          </select>
+          {errors.duracion && <p className={styles.error}>{errors.duracion}</p>}
+        </div>
+
+        <button type="submit" className={styles.submitButton}>
+          Enviar
+        </button>
+      </form>
+    }
   </>);
 
 }

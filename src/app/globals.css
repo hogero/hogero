@@ -1,27 +1,50 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --s-background: #c6c7bf;
+  --background: #eeeeee;
+  --main-color: #6a6b2c;
+  --second-color: #97b09d;
+  --third-color: #cde1d8;
+  --last-color: #7bba9d;
+  --highlight-color: #ffbd5a;
+  --dark-text: #333;
+  --light-text: #ffffff;
+  --card-background: #f1f1f1;
+  --border-color: #dcdcdc;
+  --text-color: #333333;
+  --error-color: #d9534f;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #c6c7bf;
-    --main-color: #42706e;
-    --second-color: #97b09d;
-    --third-color: #cde1d8;
-    --last-color: #7bba9d;
-  }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 body {
   color: var(--main-color);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+
+  .react-datepicker-wrapper {
+    width: 100%;
+    text-align: left;
+  }
+
   .react-datepicker__current-month {
     text-transform: capitalize;
   }
+}
+
+input {
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  /* Centra el contenido horizontalmente */
+  padding: 0 1rem;
+  /* Añade un pequeño padding para evitar que el contenido se pegue a los bordes */
 }

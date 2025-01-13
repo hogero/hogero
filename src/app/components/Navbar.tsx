@@ -1,46 +1,50 @@
-"use client"
-
-import style from "../styles.module.css";
+"use client";
+import React, { useState } from "react";
 import Link from "next/link";
-import { useEffect } from "react";
+import styles from "../styles/navbar.module.css";
 
-const links = [
-    {
-        name: "Inicio",
-        href: "/",
-        icon: ""
-    },
-    {
-        name: "Planes",
-        href: "/planes",
-        icon: ""
-    },
-    {
-        name: "Agendar cita",
-        href: "/agendas",
-        icon: ""
-    }
-]
+const Navbar: React.FC = () => {
+    const [isOpen, setIsOpen] = useState(false);
 
-export default function Navbar() {
-    useEffect(() => {
-        require("bootstrap/dist/js/bootstrap.bundle.js")
-    }, [])
+    const links = [
+        {
+            name: "Inicio",
+            href: "/",
+            icon: ""
+        },
+        {
+            name: "Planes",
+            href: "/planes",
+            icon: ""
+        },
+        {
+            name: "Agendar cita",
+            href: "/agendas",
+            icon: ""
+        }
+    ];
+
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
+
     return (
-        <nav className={`${style.navbar} navbar navbar-expand-lg`}>
-            <div className="container-fluid">
-                <Link className="navbar-brand" href="/">HOGERO</Link>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
+        <nav className={styles.navbar}>
+            <div className={styles.navbarContainer}>
+                <Link href={"/"} className={styles.logo}>HOGERO</Link>
+                <button className={styles.menuToggle} onClick={toggleMenu}>
+                    ☰
                 </button>
-                <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div className="navbar-nav">
-                        {links.map(l => {
-                            return <Link href={l.href} key={l.name} className="nav-link">{l.name}</Link>
-                        })}
-                    </div>
-                </div>
+                <ul className={`${styles.navLinks} ${isOpen ? styles.navOpen : ""}`}>
+                    {links.map((link, index) => (
+                        <li key={index}>
+                            <Link href={link.href}>{link.name}</Link>
+                        </li>
+                    ))}
+                </ul>
             </div>
         </nav>
     );
-}
+};
+
+export default Navbar;

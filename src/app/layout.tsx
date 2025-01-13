@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import "bootstrap/dist/css/bootstrap.min.css"
 import "./globals.css";
-import { geistSans } from "./fonts";
+import { lora, nunito } from "./fonts";
 import Navbar from "./components/Navbar";
 import style from "./styles.module.css";
 
@@ -17,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.className} antialiased container`}>
+      <body className={`${nunito.className} antialiased container`}>
         <Navbar />
         <div className={style.generalInfo}>
           {children}
