@@ -1,8 +1,7 @@
+import { emailHogero, whatsappNumber } from '../services/variables';
 import styles from '../styles/contacto.module.css';
 
 const Contactanos = () => {
-    const whatsappNumber = "+527297512152";
-    const email = "hogerohome@gmail.com";
     const defaultMessage = "Hola, quiero más información sobre los servicios.";
     const emailSubject = "Consulta sobre servicios de gerontología";
     return (
@@ -27,7 +26,7 @@ const Contactanos = () => {
                 <div className={styles.contactOption}>
                     <h2>Correo Electrónico</h2>
                     <p>Envíanos un correo electrónico con tus preguntas o solicitudes.</p>
-                    <a href={`mailto:${email}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(defaultMessage)}`}
+                    <a href={`mailto:${emailHogero}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(defaultMessage)}`}
                         className={styles.contactLink}>
                         Escribir un correo
                     </a>

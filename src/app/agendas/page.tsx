@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { DataService } from "../services/getData.services";
 import { Spinner } from '../components/Spinner';
-import { API_GEN } from "../services/variables";
+import { API_GEN, emailHogero, whatsappNumber } from "../services/variables";
 import { AgendasInt, LoadingData } from '../services/interfaces';
 import { formatDate, showToast } from "../services/utils";
 import "react-datepicker/dist/react-datepicker.css";
@@ -26,7 +26,7 @@ export default function Page() {
     if (idParam) {
       setAgendaId(idParam)
       getAgenda(idParam)
-    }else{
+    } else {
       setAgenda(undefined);
       setAgendaId("");
     }
@@ -76,10 +76,12 @@ export default function Page() {
       <div className={styles.formSearch}>
         <input
           type="text"
+          name="cita"
           value={agendaId}
           onChange={onChangeInput}
           className={styles.input}
           placeholder="Escribe el número de tu cita"
+          autoComplete="true"
         />
         <button type="submit" className={styles.submitButton}>
           Consultar
@@ -122,6 +124,34 @@ export default function Page() {
               <strong>Concepto:</strong> {agendaId}
             </li>
           </ul>
+          <p>
+            Mandar comprobante por:
+          </p>
+          <div className={styles.actions}>
+            <button
+              className={styles.contactLink}
+              onClick={() => {
+                const whatsappMessage = encodeURIComponent(
+                  `Hola, les envio mi comprobante de transferencia para confirmar la cita: ${agendaId}`
+                );
+                window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, "_blank");
+              }}
+            >
+              WhatsApp
+            </button>
+            <button
+              className={styles.contactLink}
+              onClick={() => {
+                const emailSubject = encodeURIComponent(`Comprobante de transferencia: ${agendaId}`);
+                const emailBody = encodeURIComponent(
+                  `Hola,\n\nAdjunto mi comprobante de transferencia para confirmar la cita: ${agendaId}.\n\nGracias.`
+                );
+                window.open(`mailto:${emailHogero}?subject=${emailSubject}&body=${emailBody}`, "_blank");
+              }}
+            >
+              Correo
+            </button>
+          </div>
         </div>
       )}
     </>
