@@ -16,10 +16,10 @@ const planes = [
   },
 ];
 
-const Planes = () => {
+const Servicios = () => {
   return (
     <section className={styles.planesSection}>
-      <h2 className={styles.title}>Nuestras Sesiones</h2>
+      <h2 className={styles.title}>Nuestros Servicios</h2>
       <div className={styles.planesContainer}>
         {planes.map((plan, index) => (
           <div className={styles.planCard} key={index}>
@@ -38,4 +38,4 @@ const Planes = () => {
   );
 };
 
-export default Planes;
+export default Servicios;

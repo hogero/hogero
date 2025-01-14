@@ -13,8 +13,8 @@ const Navbar: React.FC = () => {
             icon: ""
         },
         {
-            name: "Planes",
-            href: "/planes",
+            name: "Servicios",
+            href: "/servicios",
             icon: ""
         },
         {

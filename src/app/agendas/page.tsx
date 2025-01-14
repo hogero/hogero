@@ -10,7 +10,7 @@ import styles from "../styles/agendas.module.css";
 import { useSearchParams } from 'next/navigation'
 import Agenda from "../components/Agenda";
 
-export default function Page() {
+const ConsultaCita = ()=> {
   const dataService = new DataService();
   const initAgenda: AgendasInt = {
     direccion: "", duracion: 0, email: "", fechaFin: "", fechaInicio: "", nombre: "", telefono: ""
@@ -98,3 +98,5 @@ export default function Page() {
   </>);
 
 }
+
+export default ConsultaCita;

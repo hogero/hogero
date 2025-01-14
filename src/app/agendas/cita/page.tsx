@@ -12,7 +12,7 @@ import { setHours } from "date-fns";
 import styles from "../../styles/agendas.module.css";
 import Agenda from "@/app/components/Agenda";
 
-export default function Page() {
+const AgendarCita = () => {
   const dataService = new DataService();
   const initAgenda: AgendasInt = {
     direccion: "", duracion: 0, email: "", fechaFin: "", fechaInicio: "", nombre: "", telefono: ""
@@ -82,7 +82,7 @@ export default function Page() {
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   // Validaciones
-  const validate = () => {
+  const validateData = () => {
     const newErrors: { [key: string]: string } = {};
 
     if (!agenda.nombre.trim()) {
@@ -102,7 +102,7 @@ export default function Page() {
     }
 
     if (agenda.duracion !== 1 && agenda.duracion !== 2) {
-      newErrors.duracion = "La duración debe ser Básica o Extendida";
+      newErrors.duracion = "La sesión debe ser Básica o Extendida";
     }
 
     if (!agenda.fechaInicio) {
@@ -129,7 +129,7 @@ export default function Page() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validate()) {
+    if (validateData()) {
       setLoading({ loading: true, message: "Generando agenda, espere un momento" });
       const reqAgendas = await dataService.requestPost(`${API_GEN}/agenda`, agenda);
       if (reqAgendas.ok) {
@@ -245,7 +245,7 @@ export default function Page() {
               onChange={handleChange}
               className={styles.select}
             >
-              <option value={0}>Sesión</option>
+              <option value={0}>--Selecciona la sesión--</option>
               <option value={1}>Básica</option>
               <option value={2}>Extendida</option>
             </select>
@@ -265,5 +265,6 @@ export default function Page() {
       </>
     }
   </>);
-
 }
+
+export default AgendarCita; 
