@@ -144,6 +144,7 @@
     background: transparent;
     text-align: center;
     width: 150px;
+    text-decoration: none;
 }
 
 .contactLink:hover {

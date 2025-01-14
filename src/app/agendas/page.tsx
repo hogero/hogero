@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useEffect, useState } from "react";
 import { DataService } from "../services/getData.services";
 import { Spinner } from '../components/Spinner';
@@ -128,29 +128,24 @@ export default function Page() {
             Mandar comprobante por:
           </p>
           <div className={styles.actions}>
-            <button
+            <a
               className={styles.contactLink}
-              onClick={() => {
-                const whatsappMessage = encodeURIComponent(
-                  `Hola, les envio mi comprobante de transferencia para confirmar la cita: ${agendaId}`
-                );
-                window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, "_blank");
-              }}
+              href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+                `Hola, les envio mi comprobante de transferencia para confirmar la cita: ${agendaId}`
+              )}`}
+              target="_blank"
             >
               WhatsApp
-            </button>
-            <button
+            </a>
+            <a
               className={styles.contactLink}
-              onClick={() => {
-                const emailSubject = encodeURIComponent(`Comprobante de transferencia: ${agendaId}`);
-                const emailBody = encodeURIComponent(
-                  `Hola,\n\nAdjunto mi comprobante de transferencia para confirmar la cita: ${agendaId}.\n\nGracias.`
-                );
-                window.open(`mailto:${emailHogero}?subject=${emailSubject}&body=${emailBody}`, "_blank");
-              }}
+              href={`mailto:${emailHogero}?subject=${encodeURIComponent(`Comprobante de transferencia: ${agendaId}`)}&body=${encodeURIComponent(
+                `Hola,\n\nAdjunto mi comprobante de transferencia para confirmar la cita: ${agendaId}.\n\nGracias.`
+              )}`}
+              target="_blank"
             >
               Correo
-            </button>
+            </a>
           </div>
         </div>
       )}

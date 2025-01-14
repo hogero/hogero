@@ -129,13 +129,19 @@ export default function Page() {
     e.preventDefault();
     if (validate()) {
       setLoading({ loading: true, message: "Generando agenda, espere un momento" });
-      const reqAgendas = await dataService.requestPost(`${API_GEN}/agenda`,agenda);
+      const reqAgendas = await dataService.requestPost(`${API_GEN}/agenda`, agenda);
       if (reqAgendas.ok) {
         await updateAgendas();
         showToast("Agenda generada correctamente", "success");
-        setAgenda({...initAgenda});
+        setAgenda({ ...initAgenda });
         setSelectedDate(null);
-        window.open(`/hogero/agendas?agendaId=${reqAgendas.data.agendaId}`,"_blank")
+        const link = document.createElement("a");
+        link.href = `/hogero/agendas?agendaId=${reqAgendas.data.agendaId}`;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
       } else {
         await updateAgendas();
         showToast(reqAgendas.error?.message, "error");
