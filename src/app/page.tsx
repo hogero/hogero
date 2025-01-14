@@ -25,13 +25,15 @@ const Inicio = () => {
         <h2 className={styles.title}>¿Qué es la Gerontología?</h2>
         <div className={styles.card}>
           <p>
-            La gerontología es la ciencia que se dedica al estudio del envejecimiento en todas sus dimensiones:
+            <strong>La gerontología</strong> es la ciencia que se dedica al estudio del envejecimiento, 
+            la vejez y la persona mayor en todas sus dimensiones:
             biológica, psicológica, social y cultural. A través de esta disciplina, buscamos promover el bienestar
             integral de las personas mayores, ayudándoles a vivir con dignidad, autonomía y calidad de vida.
           </p>
           <p>
-            Con un enfoque personalizado, la gerontología puede transformar la forma en que abordamos el envejecimiento,
-            tanto en el ámbito familiar como en el profesional.
+            <strong>HOGERO</strong> busca a través de la gerontología promover el bienestar, la autonomía, la dignidad,
+            pero sobre todo, la calidad de la vida de las personas mayores con un enfoque personalizado y
+            centrado en la persona.
           </p>
         </div>
       </section>

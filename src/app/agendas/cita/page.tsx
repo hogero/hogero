@@ -10,6 +10,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { es } from "date-fns/locale/es";
 import { setHours } from "date-fns";
 import styles from "../../styles/agendas.module.css";
+import Agenda from "@/app/components/Agenda";
 
 export default function Page() {
   const dataService = new DataService();
@@ -18,6 +19,7 @@ export default function Page() {
   }
   const [loading, setLoading] = useState<LoadingData>({ loading: false });
   const [agenda, setAgenda] = useState<AgendasInt>({ ...initAgenda });
+  const [agendaId, setAgendaId] = useState<string>("");
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [excludeDates, setExcludeDates] = useState<DictT<Date[]>>({});
 
@@ -39,7 +41,7 @@ export default function Page() {
         const fechaInicio = new Date(a.fechaInicio);
         const fechasDuracion: Date[] = [];
         let i = 0
-        while (i <= a.duracion) {
+        while (i < a.duracion) {
           const fechaDuracion = new Date(a.fechaInicio);
           fechaDuracion.setHours(fechaInicio.getHours() + i);
           fechasDuracion.push(fechaDuracion);
@@ -133,8 +135,7 @@ export default function Page() {
       if (reqAgendas.ok) {
         await updateAgendas();
         showToast("Agenda generada correctamente", "success");
-        setAgenda({ ...initAgenda });
-        setSelectedDate(null);
+        setAgendaId(reqAgendas.data.agendaId);
         const link = document.createElement("a");
         link.href = `/hogero/agendas?agendaId=${reqAgendas.data.agendaId}`;
         link.target = "_blank";
@@ -150,105 +151,118 @@ export default function Page() {
     }
   }
 
+  const handleNewAgenda = () => {
+    setAgendaId("")
+    setAgenda({ ...initAgenda });
+    setSelectedDate(null);
+  }
 
   return (<>
     {loading.loading ?
       <Spinner message={loading.message} /> :
-      <form onSubmit={handleSubmit} className={styles.formContainer}>
-        <div className={styles.formGroup}>
-          <label className={styles.label}>Nombre Paciente</label>
-          <input
-            type="text"
-            name="nombre"
-            value={agenda.nombre}
-            onChange={handleChange}
-            className={styles.input}
-            placeholder="Escribe tu nombre"
-          />
-          {errors.nombre && <p className={styles.error}>{errors.nombre}</p>}
-        </div>
+      <>
+        {agendaId == "" && <form onSubmit={handleSubmit} className={styles.formContainer}>
+          <div className={styles.formGroup}>
+            <label className={styles.label}>Nombre Paciente</label>
+            <input
+              type="text"
+              name="nombre"
+              value={agenda.nombre}
+              onChange={handleChange}
+              className={styles.input}
+              placeholder="Escribe tu nombre"
+            />
+            {errors.nombre && <p className={styles.error}>{errors.nombre}</p>}
+          </div>
 
-        <div className={styles.formGroup}>
-          <label className={styles.label}>Email</label>
-          <input
-            type="email"
-            name="email"
-            value={agenda.email}
-            onChange={handleChange}
-            className={styles.input}
-            placeholder="correo@ejemplo.com"
-          />
-          {errors.email && <p className={styles.error}>{errors.email}</p>}
-        </div>
+          <div className={styles.formGroup}>
+            <label className={styles.label}>Email</label>
+            <input
+              type="email"
+              name="email"
+              value={agenda.email}
+              onChange={handleChange}
+              className={styles.input}
+              placeholder="correo@ejemplo.com"
+            />
+            {errors.email && <p className={styles.error}>{errors.email}</p>}
+          </div>
 
-        <div className={styles.formGroup}>
-          <label className={styles.label}>Teléfono</label>
-          <input
-            type="text"
-            name="telefono"
-            value={agenda.telefono}
-            onChange={handleChange}
-            maxLength={10}
-            className={styles.input}
-            placeholder="1234567890"
-          />
-          {errors.telefono && <p className={styles.error}>{errors.telefono}</p>}
-        </div>
+          <div className={styles.formGroup}>
+            <label className={styles.label}>Teléfono</label>
+            <input
+              type="text"
+              name="telefono"
+              value={agenda.telefono}
+              onChange={handleChange}
+              maxLength={10}
+              className={styles.input}
+              placeholder="1234567890"
+            />
+            {errors.telefono && <p className={styles.error}>{errors.telefono}</p>}
+          </div>
 
-        <div className={styles.formGroup}>
-          <label className={styles.label}>Dirección</label>
-          <input
-            type="text"
-            name="direccion"
-            value={agenda.direccion}
-            onChange={handleChange}
-            className={styles.input}
-            placeholder="Escribe tu dirección (Calle,Colonia,CP,Ciudad)"
-          />
-          {errors.direccion && <p className={styles.error}>{errors.direccion}</p>}
-        </div>
+          <div className={styles.formGroup}>
+            <label className={styles.label}>Dirección</label>
+            <input
+              type="text"
+              name="direccion"
+              value={agenda.direccion}
+              onChange={handleChange}
+              className={styles.input}
+              placeholder="Escribe tu dirección (Calle,Colonia,CP,Ciudad)"
+            />
+            {errors.direccion && <p className={styles.error}>{errors.direccion}</p>}
+          </div>
 
-        <div className={styles.formGroup}>
-          <label className={styles.label}>Fecha Agenda</label>
-          <DatePicker
-            selected={selectedDate}
-            onChange={(date: Date | null) => { setSelectedDate(date); setAgenda({ ...agenda, fechaInicio: date?.toISOString()! }) }}
-            showTimeSelect
-            locale={es}
-            dateFormat="Pp"
-            timeFormat="HH:mm"
-            timeIntervals={60}
-            placeholderText="Selecciona una fecha y hora"
-            customInput={<CustomInput />}
-            timeCaption="Hora"
-            minTime={setHours(0, 9)} // Hora mínima: 09:00
-            maxTime={setHours(0, 17)}
-            excludeTimes={getExcludedTimes(selectedDate)}
-            minDate={todayToNDays(1)}
-            className={styles.label}
-          />
-          {errors.fechaInicio && <p className={styles.error}>{errors.fechaInicio}</p>}
-        </div>
+          <div className={styles.formGroup}>
+            <label className={styles.label}>Fecha Agenda</label>
+            <DatePicker
+              selected={selectedDate}
+              onChange={(date: Date | null) => { setSelectedDate(date); setAgenda({ ...agenda, fechaInicio: date?.toISOString()! }) }}
+              showTimeSelect
+              locale={es}
+              dateFormat="Pp"
+              timeFormat="HH:mm"
+              timeIntervals={60}
+              placeholderText="Selecciona una fecha y hora"
+              customInput={<CustomInput />}
+              timeCaption="Hora"
+              minTime={setHours(0, 9)} // Hora mínima: 09:00
+              maxTime={setHours(0, 17)}
+              excludeTimes={getExcludedTimes(selectedDate)}
+              minDate={todayToNDays(1)}
+              className={styles.label}
+            />
+            {errors.fechaInicio && <p className={styles.error}>{errors.fechaInicio}</p>}
+          </div>
 
-        <div className={styles.formGroup}>
-          <label className={styles.label}>Sesión</label>
-          <select
-            name="duracion"
-            value={agenda.duracion}
-            onChange={handleChange}
-            className={styles.select}
-          >
-            <option value={0}>Sesión</option>
-            <option value={1}>Básica</option>
-            <option value={2}>Extendida</option>
-          </select>
-          {errors.duracion && <p className={styles.error}>{errors.duracion}</p>}
-        </div>
+          <div className={styles.formGroup}>
+            <label className={styles.label}>Sesión</label>
+            <select
+              name="duracion"
+              value={agenda.duracion}
+              onChange={handleChange}
+              className={styles.select}
+            >
+              <option value={0}>Sesión</option>
+              <option value={1}>Básica</option>
+              <option value={2}>Extendida</option>
+            </select>
+            {errors.duracion && <p className={styles.error}>{errors.duracion}</p>}
+          </div>
 
-        <button type="submit" className={styles.submitButton}>
-          Agendar
-        </button>
-      </form>
+          <button type="submit" className={styles.submitButton}>
+            Agendar
+          </button>
+        </form>}
+        {agendaId !== "" && <>
+          <Agenda agenda={agenda} agendaId={agendaId} isNew={true} />
+          <div className={styles.divNewAgenda}>
+            <button className={styles.newAgenda} onClick={handleNewAgenda}>Nueva cita</button>
+          </div>
+        </>}
+      </>
     }
   </>);
 
