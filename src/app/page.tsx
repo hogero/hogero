@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./inicio.module.css";
+import Link from "next/link";
 
 const Inicio = () => {
   const servicios = [
@@ -13,10 +14,13 @@ const Inicio = () => {
       {/* Frase Representativa */}
       <section className={styles.frase}>
         <h1>
-          "Cuidar del presente, es asegurar la dignidad del futuro."
+          Cuidar del presente, es asegurar la dignidad del futuro.
         </h1>
         <p>
-          La esencia de la gerontología es brindar calidad de vida en cada etapa.
+          En HOGERO, llevamos nuestros servicios hasta tu hogar para
+          realizar planes personalizados gerontológicos que ayudarán a mejorar tu calidad de vida. 
+          <Link href="/agendas/cita" className={styles.link}> Agenda tu cita</Link>
+
         </p>
       </section>
 
@@ -25,7 +29,7 @@ const Inicio = () => {
         <h2 className={styles.title}>¿Qué es la Gerontología?</h2>
         <div className={styles.card}>
           <p>
-            <strong>La gerontología</strong> es la ciencia que se dedica al estudio del envejecimiento, 
+            <strong>La gerontología</strong> es la ciencia que se dedica al estudio del envejecimiento,
             la vejez y la persona mayor en todas sus dimensiones:
             biológica, psicológica, social y cultural. A través de esta disciplina, buscamos promover el bienestar
             integral de las personas mayores, ayudándoles a vivir con dignidad, autonomía y calidad de vida.

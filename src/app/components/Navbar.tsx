@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import styles from "../styles/navbar.module.css";
+import Image from "next/image";
 
 const Navbar: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -41,7 +42,10 @@ const Navbar: React.FC = () => {
     return (
         <nav className={styles.navbar}>
             <div className={styles.navbarContainer}>
-                <Link href={"/"} className={styles.logo}>HOGERO</Link>
+                <Link href={"/"} className={styles.logo}>
+                    <img src="/hogero/LogoHogero.svg" alt="logo"/>
+                    HOGERO
+                </Link>
                 <button className={styles.menuToggle} onClick={toggleMenu}>
                     ☰
                 </button>

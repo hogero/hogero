@@ -7,7 +7,7 @@
   
   .title {
     font-size: 2.5rem;
-    color: var(--main-color);
+    color: var(--primary);
     margin-bottom: 2rem;
   }
   
@@ -40,7 +40,7 @@
   
   .planTitle {
     font-size: 1.8rem;
-    color: var(--main-color);
+    color: var(--s-background);
     margin-bottom: 1rem;
   }
   
