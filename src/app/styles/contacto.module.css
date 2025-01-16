@@ -8,7 +8,7 @@
 }
 
 .title {
-    color: var(--main-color);
+    color: var(--primary);
     text-align: center;
     font-size: 2rem;
     margin-bottom: 1rem;
@@ -33,7 +33,7 @@
 .contactOption h2 {
     margin-bottom: 0.5rem;
     font-size: 1.5rem;
-    color: var(--main-color);
+    color: var(--primary);
 }
 
 .contactOption p {
