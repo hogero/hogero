@@ -3,7 +3,7 @@
 .floatingIconsContainer {
   position: fixed;
   bottom: 20px; /* 20px desde la parte inferior de la ventana visible */
-  right: 20px; /* 20px desde el borde derecho */
+  right: 8px; /* 20px desde el borde derecho */
   display: flex;
   flex-direction: column; /* Asegura que los iconos estén en fila */
   gap: 15px; /* Espacio entre los iconos */
