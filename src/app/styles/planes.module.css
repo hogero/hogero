@@ -41,7 +41,7 @@
   .planTitle {
     font-size: 1.8rem;
     color: var(--s-background);
-    margin-bottom: 1rem;
+    margin: 0;
   }
   
   .planDescription {

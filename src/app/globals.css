@@ -67,7 +67,6 @@ input {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  /* Centra el contenido horizontalmente */
   padding: 0 1rem;
-  /* Añade un pequeño padding para evitar que el contenido se pegue a los bordes */
+  padding-top: 80px;
 }
