@@ -2,7 +2,7 @@
 import { forwardRef, useEffect, useState } from "react";
 import { DataService } from "../../services/getData.services";
 import { Spinner } from '../../components/Spinner';
-import { API_GEN } from "../../services/variables";
+import { API_GEN, PLANES } from "../../services/variables";
 import { AgendasInt, DictT, LoadingData } from '../../services/interfaces';
 import { showToast, todayToNDays } from "../../services/utils";
 import DatePicker from "react-datepicker";
@@ -11,12 +11,18 @@ import { es } from "date-fns/locale/es";
 import { setHours } from "date-fns";
 import styles from "../../styles/agendas.module.css";
 import Agenda from "@/app/components/Agenda";
+import dynamic from "next/dynamic";
+import { useSearchParams } from "next/navigation";
 
 const AgendarCita = () => {
+  const searchParams = useSearchParams();
   const dataService = new DataService();
+  const planId = searchParams.get("sesionId") ?? "0"
+  const auxPlan = PLANES.find(p => p.id == Number(planId));
   const initAgenda: AgendasInt = {
-    direccion: "", duracion: 0, email: "", fechaFin: "", fechaInicio: "", nombre: "", telefono: ""
+    direccion: "", duracion: auxPlan?.duration ?? 0, nombrePlan: "", planId, email: "", fechaFin: "", fechaInicio: "", nombre: "", telefono: ""
   }
+  
   const [loading, setLoading] = useState<LoadingData>({ loading: false });
   const [agenda, setAgenda] = useState<AgendasInt>({ ...initAgenda });
   const [agendaId, setAgendaId] = useState<string>("");
@@ -53,7 +59,6 @@ const AgendarCita = () => {
           objAgendas[fechaInicio.toLocaleDateString()] = [...fechasDuracion];
         }
       });
-      console.log(objAgendas);
       setExcludeDates(objAgendas);
     } else {
       showToast("Error al obtener las agendas disponibles, intente más tarde", "error")
@@ -101,8 +106,8 @@ const AgendarCita = () => {
       newErrors.telefono = "El teléfono debe contener 10 dígitos.";
     }
 
-    if (agenda.duracion !== 1 && agenda.duracion !== 2) {
-      newErrors.duracion = "La sesión debe ser Básica o Extendida";
+    if (agenda.duracion == 0) {
+      newErrors.duracion = "La sesión es obligatoria.";
     }
 
     if (!agenda.fechaInicio) {
@@ -121,7 +126,8 @@ const AgendarCita = () => {
       const numericValue = value.replace(/[^0-9]/g, "");
       setAgenda({ ...agenda, [name]: numericValue });
     } else if (name === "duracion") {
-      setAgenda({ ...agenda, [name]: Number(value) });
+      const pl = PLANES.find(p => p.id == Number(value)) ?? { duration: 0 };
+      setAgenda({ ...agenda, [name]: pl.duration });
     } else {
       setAgenda({ ...agenda, [name]: value });
     }
@@ -241,13 +247,12 @@ const AgendarCita = () => {
             <label className={styles.label}>Sesión</label>
             <select
               name="duracion"
-              value={agenda.duracion}
+              value={agenda.planId}
               onChange={handleChange}
               className={styles.select}
             >
               <option value={0}>--Selecciona la sesión--</option>
-              <option value={1}>Básica</option>
-              <option value={2}>Extendida</option>
+              {PLANES.map((plan, index) => (<option key={index} value={plan.id}>{plan.title}</option>))}
             </select>
             {errors.duracion && <p className={styles.error}>{errors.duracion}</p>}
           </div>
@@ -267,4 +272,6 @@ const AgendarCita = () => {
   </>);
 }
 
-export default AgendarCita; 
+export default dynamic(() => Promise.resolve(AgendarCita), {
+  ssr: false
+});
