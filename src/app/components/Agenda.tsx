@@ -7,16 +7,17 @@ import styles from "../styles/agendas.module.css";
 
 export default function Agenda(props: { agenda: AgendasInt, isNew?: boolean, agendaId: string }) {
     const { agenda, isNew, agendaId } = props;
-
+    const date = formatDate(agenda.fechaInicio);
     return (<>
         {isNew && <center>Recuerda guardar tu número de cita.</center>}
         <div className={styles.container}>
             <h2 className={styles.title}>Número de Cita {agendaId}</h2>
             <div className={styles.info}>
+                <p><strong>Servicio:</strong> {agenda.nombrePlan}</p>
                 <p><strong>Nombre:</strong> {agenda.nombre}</p>
                 <p><strong>Teléfono:</strong> {agenda.telefono}</p>
                 <p><strong>Email:</strong> {agenda.email}</p>
-                <p><strong>Fecha:</strong> {formatDate(agenda.fechaInicio)}:00</p>
+                <p><strong>Fecha:</strong> {date}:00 a {date.split(",")}:00</p>
                 <p><strong>Dirección:</strong> {agenda.direccion}</p>
                 <p>
                     <strong>Confirmación:</strong>{" "}

@@ -43,8 +43,11 @@ export const getJSON = async (response: Response) => {
     return data;
 }
 
-export const formatDate = (dateString: string) => {
+export const formatDate = (dateString: string, addHrs?: number) => {
     const date = new Date(dateString);
+    if(addHrs){
+        date.setHours(date.getHours()+addHrs);
+    }
     const options: Intl.DateTimeFormatOptions = {
         day: "2-digit",
         month: "2-digit",

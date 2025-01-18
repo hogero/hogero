@@ -7,7 +7,7 @@ export interface AgendasInt {
     duracion: number;
     direccion: string;
     confirmacion?: boolean;
-    planId: string;
+    planId?: string;
     nombrePlan?: string;
 }
 

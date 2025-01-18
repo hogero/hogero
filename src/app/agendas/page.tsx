@@ -47,9 +47,10 @@ const ConsultaCita = ()=> {
     setLoading({ loading: true, message: "Buscando agenda, espere un momento" });
     const reqAgendas = await dataService.requestGet(`${API_GEN}/agenda?agendaId=${id}`);
     if (reqAgendas.ok) {
-      const agenda = reqAgendas.data
+      const agenda: AgendasInt[] = reqAgendas.data
       if (agenda.length > 0) {
-        setAgenda(agenda[0]);
+        agenda[0].duracion = agenda[0].duracion - 2;
+        setAgenda(agenda[0],);
       } else {
         showToast("No sé encontró ninguna agenda con ese número.", "warning")
       }
