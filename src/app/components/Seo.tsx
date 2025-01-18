@@ -38,7 +38,7 @@ const Seo: React.FC<LayoutProps> = ({
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={image} />
 
-        <meta name="google-site-verification" content="4D9WjvSNd7sor12X10t1KObfa9FbNcX4U4R7n-b8Rvg" />
+        <meta name="google-site-verification" content="Vv220su-qh7Z7umMM_1gM9HvQyH6CawuPZL2iCwYPAg" />
 
         <title>{title}</title>
         <link rel="icon" href="/hogero/favicon.ico" />
