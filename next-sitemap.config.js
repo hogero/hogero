@@ -2,6 +2,7 @@
 module.exports = {
     siteUrl: 'https://hogero.github.io/hogero/', // URL base de tu sitio en GitHub Pages
     generateRobotsTxt: true, // Genera automáticamente el archivo robots.txt
+    generateIndexSitemap: true,
     sitemapSize: 5000, // Límite de URLs por archivo sitemap
     exclude: [
       '/api/*', // Excluye rutas de API
@@ -17,19 +18,25 @@ module.exports = {
     additionalPaths: async (config) => {
       return [
         {
+          loc: '/', // Página de inicio
+          changefreq: 'monthly',
+          priority: 1,
+          lastmod: new Date().toISOString(),
+        },
+        {
           loc: '/servicios', // Página de servicios
           changefreq: 'monthly',
           priority: 0.8,
           lastmod: new Date().toISOString(),
         },
         {
-          loc: '/consultar-cita', // Página para consultar citas
+          loc: '/agendas', // Página para consultar citas
           changefreq: 'monthly',
           priority: 0.7,
           lastmod: new Date().toISOString(),
         },
         {
-          loc: '/agendar-cita', // Página para agendar citas
+          loc: '/agendas/cita', // Página para agendar citas
           changefreq: 'monthly',
           priority: 0.9,
           lastmod: new Date().toISOString(),
