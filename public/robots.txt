@@ -1,0 +1,13 @@
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Disallow: /api/
+
+# Host
+Host: https://hogero.github.io/hogero/
+
+# Sitemaps
+Sitemap: https://hogero.github.io/hogero/sitemap.xml

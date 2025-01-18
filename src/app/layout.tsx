@@ -1,15 +1,11 @@
-import type { Metadata } from "next";
 import "./globals.css";
 import { lora, nunito } from "./fonts";
 import Navbar from "./components/Navbar";
 import style from "./inicio.module.css";
 import ToastProvider from "./components/ToastProvider";
 import { Suspense } from "react";
+import Seo from "./components/Seo";
 
-export const metadata: Metadata = {
-  title: "HOGERO",
-  description: "Gerontología a la puerta de tu casa",
-};
 
 export default function RootLayout({
   children,
@@ -18,6 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Seo/>
       <body className={`${nunito.className} antialiased container`}>
         <ToastProvider />
         <Navbar />

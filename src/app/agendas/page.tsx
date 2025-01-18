@@ -9,6 +9,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import styles from "../styles/agendas.module.css";
 import { useSearchParams } from 'next/navigation'
 import Agenda from "../components/Agenda";
+import dynamic from 'next/dynamic'
 
 const ConsultaCita = ()=> {
   const dataService = new DataService();
@@ -99,4 +100,6 @@ const ConsultaCita = ()=> {
 
 }
 
-export default ConsultaCita;
+export default dynamic(() => Promise.resolve(ConsultaCita), {
+  ssr: false
+});
