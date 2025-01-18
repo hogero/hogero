@@ -40,24 +40,26 @@ const Navbar: React.FC = () => {
     };
 
     return (
-        <nav className={styles.navbar}>
-            <div className={styles.navbarContainer}>
-                <Link href={"/"} className={styles.logo}>
-                    <img src="/hogero/LogoHogero.svg" alt="logo"/>
-                    HOGERO
-                </Link>
-                <button className={styles.menuToggle} onClick={toggleMenu}>
-                    ☰
-                </button>
-                <ul className={`${styles.navLinks} ${isOpen ? styles.navOpen : ""}`}>
-                    {links.map((link, index) => (
-                        <li key={index}>
-                            <Link href={link.href} onClick={toggleMenu}>{link.name}</Link>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        </nav>
+        <header>
+            <nav className={styles.navbar}>
+                <div className={styles.navbarContainer}>
+                    <Link href={"/"} className={styles.logo}>
+                        <img src="/hogero/LogoHogero.svg" alt="logo" />
+                        HOGERO
+                    </Link>
+                    <button className={styles.menuToggle} onClick={toggleMenu}>
+                        ☰
+                    </button>
+                    <ul className={`${styles.navLinks} ${isOpen ? styles.navOpen : ""}`}>
+                        {links.map((link, index) => (
+                            <li key={index}>
+                                <Link href={link.href} onClick={toggleMenu}>{link.name}</Link>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </nav>
+        </header>
     );
 };
 

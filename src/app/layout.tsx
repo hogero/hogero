@@ -5,6 +5,7 @@ import style from "./inicio.module.css";
 import ToastProvider from "./components/ToastProvider";
 import { Suspense } from "react";
 import Seo from "./components/Seo";
+import Footer from "./components/Footer";
 
 
 export default function RootLayout({
@@ -23,6 +24,7 @@ export default function RootLayout({
             {children}
           </Suspense>
         </div>
+        <Footer/>
       </body>
     </html>
   );
