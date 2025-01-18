@@ -12,7 +12,7 @@ export const PLANES: PlanesInt[] = [
     title: "Evaluación y Diagnóstico",
     description: "Sesión inicial para evaluar las necesidades y capacidades del adulto mayor.",
     features: ["2 horas", "Entrevista inicial y análisis de historial", "Evaluación cognitiva", "Diagnóstico físico y motriz", "Reporte detallado con observaciones", "Recomendaciones personalizadas"],
-    cost: "$1,000.00/sesión",
+    cost: "$750.00/sesión",
     duration: 2,
   },
   {
@@ -20,7 +20,7 @@ export const PLANES: PlanesInt[] = [
     title: "Estímulo Cognitivo Básico",
     description: "Sesión diseñada para fortalecer habilidades cognitivas esenciales.",
     features: ["1 hora", "Ejercicios de memoria", "Actividades de resolución de problemas", "Estimulación sensorial", "Ejercicios de atención y concentración", "Guía profesional personalizada"],
-    cost: "$600.00/sesión",
+    cost: "$550.00/sesión",
     duration: 1,
   },
   {
@@ -28,7 +28,7 @@ export const PLANES: PlanesInt[] = [
     title: "Activación Física Guiada",
     description: "Plan enfocado en mantener y mejorar la movilidad y condición física.",
     features: ["2 horas", "Rutinas de movilidad articular", "Ejercicios de fuerza y equilibrio", "Técnicas de respiración y relajación", "Asesoría en ergonomía", "Monitoreo personalizado"],
-    cost: "$850.00/sesión",
+    cost: "$750.00/sesión",
     duration: 2,
   },
   {
