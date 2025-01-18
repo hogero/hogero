@@ -10,9 +10,9 @@ export const PLANES: PlanesInt[] = [
   {
     id: 1,
     title: "Evaluación y Diagnóstico",
-    description: "Sesión inicial para evaluar las necesidades y capacidades del adulto mayor.",
+    description: "Sesión inicial para evaluar las necesidades y capacidades del adulto mayor. Altamente recomendada como primer sesión.",
     features: ["2 horas", "Entrevista inicial y análisis de historial", "Evaluación cognitiva", "Diagnóstico físico y motriz", "Reporte detallado con observaciones", "Recomendaciones personalizadas"],
-    cost: "$750.00/sesión",
+    cost: "$900.00/sesión",
     duration: 2,
   },
   {
