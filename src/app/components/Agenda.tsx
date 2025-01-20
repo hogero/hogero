@@ -1,5 +1,5 @@
 "use client";
-import { emailHogero, whatsappNumber } from "../services/variables";
+import { emailHogero, isProduction, whatsappNumber } from "../services/variables";
 import { AgendasInt, PlanesInt } from '../services/interfaces';
 import { formatDate } from "../services/utils";
 import "react-datepicker/dist/react-datepicker.css";
@@ -7,7 +7,7 @@ import styles from "../styles/agendas.module.css";
 
 export default function Agenda(props: { agenda: AgendasInt, isNew?: boolean, agendaId: string }) {
     const { agenda, isNew, agendaId } = props;
-    const planData: PlanesInt = JSON.parse(agenda.planData ?? "{}");
+    const planData: PlanesInt = agenda.planData!;
     const date = formatDate(agenda.fechaInicio);
     return (<>
         {isNew && <center>Recuerda guardar tu número de cita.</center>}

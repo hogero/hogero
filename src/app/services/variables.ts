@@ -1,6 +1,6 @@
 import { PlanesInt } from "./interfaces";
 
-const isProduction = process.env.NODE_ENV === "production";
+export const isProduction = process.env.NODE_ENV === "production";
 export const API_GEN = isProduction
   ? "https://hogeroserver-production.up.railway.app"
   : "http://localhost:4000";

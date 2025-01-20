@@ -20,7 +20,7 @@ const AgendarCita = () => {
   const planId = searchParams.get("sesionId") ?? "0"
   const auxPlan = PLANES.find(p => p.id == Number(planId));
   const initAgenda: AgendasInt = {
-    direccion: "", duracion: auxPlan?.duration ?? 0, planData: auxPlan?.title ?? "", planId, email: "", fechaFin: "", fechaInicio: "", nombre: "", telefono: ""
+    direccion: "", duracion: auxPlan?.duration ?? 0, planId, email: "", fechaFin: "", fechaInicio: "", nombre: "", telefono: ""
   }
   
   const [loading, setLoading] = useState<LoadingData>({ loading: false });
@@ -127,7 +127,7 @@ const AgendarCita = () => {
       setAgenda({ ...agenda, [name]: numericValue });
     } else if (name === "duracion") {
       const pl = PLANES.find(p => p.id == Number(value)) ?? {duration:0,title:""};
-      setAgenda({ ...agenda, [name]: pl.duration, planData: JSON.stringify(pl), planId: value });
+      setAgenda({ ...agenda, [name]: pl.duration, planData: pl as any, planId: value });
     } else {
       setAgenda({ ...agenda, [name]: value });
     }
