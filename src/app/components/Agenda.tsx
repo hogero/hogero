@@ -9,6 +9,7 @@ export default function Agenda(props: { agenda: AgendasInt, isNew?: boolean, age
     const { agenda, isNew, agendaId } = props;
     const planData: PlanesInt = agenda.planData!;
     const date = formatDate(agenda.fechaInicio);
+    const finalHrs = formatDate(agenda.fechaInicio,planData.duration).split(", ")[1];
     return (<>
         {isNew && <center>Recuerda guardar tu número de cita.</center>}
         <div className={styles.container}>
@@ -18,7 +19,7 @@ export default function Agenda(props: { agenda: AgendasInt, isNew?: boolean, age
                 <p><strong>Nombre:</strong> {agenda.nombre}</p>
                 <p><strong>Teléfono:</strong> {agenda.telefono}</p>
                 <p><strong>Email:</strong> {agenda.email}</p>
-                <p><strong>Fecha:</strong> {date}:00 a {formatDate(agenda.fechaInicio,planData.duration)}:00</p>
+                <p><strong>Fecha:</strong> {date}:00 a {finalHrs}:00</p>
                 <p><strong>Dirección:</strong> {agenda.direccion}</p>
                 <p>
                     <strong>Confirmación:</strong>{" "}
