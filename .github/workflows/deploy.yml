@@ -62,19 +62,26 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
       - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
+        run: ${{ steps.detect-package-manager.outputs.runner }} next build && ${{ steps.detect-package-manager.outputs.runner }} next export
 
-      - name: Verify robots.txt
+      - name: Verify output files
         run: |
+          if [ ! -f ./out/index.html ]; then
+            echo "Error: index.html not found in ./out"
+            exit 1
+          fi
           if [ ! -f ./out/robots.txt ]; then
             echo "Error: robots.txt not found in ./out"
             exit 1
           fi
 
-      - name: Upload artifact
+      - name: Copy to temporary directory
+        run: cp -r ./out ./out_temp
+
+      - name: Upload temporary artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./out_temp
 
   # Deployment job
   deploy:
@@ -88,4 +95,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
         with:
-          atomic: true
+          path: ./out_temp
