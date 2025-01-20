@@ -74,10 +74,10 @@ jobs:
             exit 1
           fi
 
-      - name: Copy to temporary directory
+      - name: Copy to deploy directory
         run: cp -r ./out ./out_deploy
 
-      - name: Upload temporary artifact
+      - name: Upload deploy artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./out_deploy
