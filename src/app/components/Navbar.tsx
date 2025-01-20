@@ -43,7 +43,7 @@ const Navbar: React.FC = () => {
         <header>
             <nav className={styles.navbar}>
                 <div className={styles.navbarContainer}>
-                    <Link href={"/"} className={styles.logo}>
+                    <Link href={"/"} className={styles.logo} onClick={toggleMenu}>
                         <img src="/hogero/LogoHogero.svg" alt="logo" />
                         HOGERO
                     </Link>

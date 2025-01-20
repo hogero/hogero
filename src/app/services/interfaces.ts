@@ -8,7 +8,7 @@ export interface AgendasInt {
     direccion: string;
     confirmacion?: boolean;
     planId?: string;
-    nombrePlan?: string;
+    planData?: string;
 }
 
 export interface DictT<T> {

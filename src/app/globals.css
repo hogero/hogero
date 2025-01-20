@@ -57,6 +57,9 @@ body {
     background-color: var(--background);
     color: var(--main-color);
   }
+  h1,h2,h3{
+    margin: 0;
+  }
 }
 
 input {

@@ -55,8 +55,8 @@ const Inicio = () => {
             <div>
               <h3>Karla Itzel Ramos Romero</h3>
               <p className={styles.subtext}>
-                Lic. en Gerontología con tres años de experiencia en distintos
-                ámbitos. Estoy dedicada a proporcionar atención integral y de
+                Lic. en Gerontología con tres años de experiencia. 
+                Estoy dedicada a proporcionar atención integral y de
                 calidad a personas mayores, adaptando mis habilidades a sus
                 necesidades individuales para mejorar su bienestar y calidad de
                 vida

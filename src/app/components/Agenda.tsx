@@ -1,23 +1,24 @@
 "use client";
 import { emailHogero, whatsappNumber } from "../services/variables";
-import { AgendasInt } from '../services/interfaces';
+import { AgendasInt, PlanesInt } from '../services/interfaces';
 import { formatDate } from "../services/utils";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "../styles/agendas.module.css";
 
 export default function Agenda(props: { agenda: AgendasInt, isNew?: boolean, agendaId: string }) {
     const { agenda, isNew, agendaId } = props;
+    const planData: PlanesInt = JSON.parse(agenda.planData ?? "{}");
     const date = formatDate(agenda.fechaInicio);
     return (<>
         {isNew && <center>Recuerda guardar tu número de cita.</center>}
         <div className={styles.container}>
             <h2 className={styles.title}>Número de Cita {agendaId}</h2>
             <div className={styles.info}>
-                <p><strong>Servicio:</strong> {agenda.nombrePlan}</p>
+                <p><strong>Servicio:</strong> {planData?.title}</p>
                 <p><strong>Nombre:</strong> {agenda.nombre}</p>
                 <p><strong>Teléfono:</strong> {agenda.telefono}</p>
                 <p><strong>Email:</strong> {agenda.email}</p>
-                <p><strong>Fecha:</strong> {date}:00 a {date.split(",")}:00</p>
+                <p><strong>Fecha:</strong> {date}:00 a {formatDate(agenda.fechaInicio,planData.duration)}:00</p>
                 <p><strong>Dirección:</strong> {agenda.direccion}</p>
                 <p>
                     <strong>Confirmación:</strong>{" "}

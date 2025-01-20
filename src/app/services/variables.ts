@@ -1,34 +1,47 @@
 import { PlanesInt } from "./interfaces";
 
-export const API_GEN = "https://hogeroserver-production.up.railway.app";
+const isProduction = process.env.NODE_ENV === "production";
+export const API_GEN = isProduction
+  ? "https://hogeroserver-production.up.railway.app"
+  : "http://localhost:4000";
 export const whatsappNumber = "+527297512152";
 export const defaultMessage = "Hola, quiero más información sobre los servicios.";
 export const emailSubject = "Consulta sobre servicios de gerontología";
 export const emailHogero = "hogerohome@gmail.com";
-export const URL_GP = "https://hogero.github.io/hogero"
+export const URL_GP = isProduction
+  ? "https://hogero.github.io/hogero"
+  : "http://localhost:3000";
 export const PLANES: PlanesInt[] = [
   {
     id: 1,
-    title: "Evaluación y Diagnóstico",
-    description: "Sesión inicial para evaluar las necesidades y capacidades del adulto mayor. Altamente recomendada como primer sesión.",
-    features: ["2 horas", "Entrevista inicial y análisis de historial", "Evaluación cognitiva", "Diagnóstico físico y motriz", "Reporte detallado con observaciones", "Recomendaciones personalizadas"],
-    cost: "$900.00/sesión",
+    title: "Evaluación Inicial",
+    description: "Sesión inicial para evaluar necesidades y factores de riesgo del adulto mayor. Recomendada como primera sesión, ya que, es indispensable conocer al paciente.",
+    features: ["2 horas", "Entrevista inicial e historia de vida", "Evaluación cognitiva, física y psicosocial", "Plan personalizado de atención"],
+    cost: "$850.00/sesión",
     duration: 2,
   },
   {
     id: 2,
-    title: "Estímulo Cognitivo Básico",
-    description: "Sesión diseñada para fortalecer habilidades cognitivas esenciales.",
-    features: ["1 hora", "Ejercicios de memoria", "Actividades de resolución de problemas", "Estimulación sensorial", "Ejercicios de atención y concentración", "Guía profesional personalizada"],
+    title: "Estimulación Cognitiva",
+    description: "Diseño para mantener tu cerebro activo mejorando múltiples dominios.",
+    features: ["1 hora", "Evaluación cognitiva exhaustiva", "Ejercicios de memoria", "Actividades de resolución de problemas", "Ejercicios de atención y concentración"],
     cost: "$550.00/sesión",
     duration: 1,
   },
   {
     id: 3,
-    title: "Activación Física Guiada",
+    title: "Activación Física",
     description: "Plan enfocado en mantener y mejorar la movilidad y condición física.",
     features: ["2 horas", "Rutinas de movilidad articular", "Ejercicios de fuerza y equilibrio", "Técnicas de respiración y relajación", "Asesoría en ergonomía", "Monitoreo personalizado"],
     cost: "$750.00/sesión",
+    duration: 2,
+  },
+  {
+    id: 3,
+    title: "Activación Física en grupos",
+    description: "Plan enfocado en mantener y mejorar la movilidad y condición física.",
+    features: ["2 horas", "Rutinas de movilidad articular", "Ejercicios de fuerza y equilibrio", "Técnicas de respiración y relajación", "Asesoría en ergonomía", "Monitoreo personalizado"],
+    cost: "$1000.00/sesión",
     duration: 2,
   },
   {
@@ -46,13 +59,5 @@ export const PLANES: PlanesInt[] = [
     features: ["1 hora", "Técnicas básicas de cuidado", "Gestión del estrés familiar", "Reconocimiento de señales de alarma", "Comunicación efectiva", "Recomendaciones prácticas"],
     cost: "$550.00/sesión",
     duration: 1,
-  },
-  {
-    id: 6,
-    title: "Programa de Prevención",
-    description: "Sesión dedicada a fomentar hábitos y actividades preventivas para el bienestar general.",
-    features: ["2 horas", "Evaluación inicial", "Diseño de rutinas personalizadas", "Recomendaciones alimenticias", "Actividades de socialización", "Monitoreo de progreso"],
-    cost: "$850.00/sesión",
-    duration: 2,
   }
 ];

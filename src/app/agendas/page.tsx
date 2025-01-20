@@ -49,7 +49,7 @@ const ConsultaCita = ()=> {
     if (reqAgendas.ok) {
       const agenda: AgendasInt[] = reqAgendas.data
       if (agenda.length > 0) {
-        agenda[0].duracion = agenda[0].duracion - 2;
+        agenda[0].duracion = agenda[0].duracion;
         setAgenda(agenda[0],);
       } else {
         showToast("No sé encontró ninguna agenda con ese número.", "warning")
