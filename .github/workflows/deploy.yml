@@ -15,7 +15,6 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Build job
   build:
     runs-on: ubuntu-latest
     steps:
@@ -62,7 +61,7 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
       - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build && ${{ steps.detect-package-manager.outputs.runner }} next export
+        run: ${{ steps.detect-package-manager.outputs.runner }} next build
 
       - name: Verify output files
         run: |
@@ -76,12 +75,12 @@ jobs:
           fi
 
       - name: Copy to temporary directory
-        run: cp -r ./out ./out_temp
+        run: cp -r ./out ./out_deploy
 
       - name: Upload temporary artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out_temp
+          path: ./out_deploy
 
   # Deployment job
   deploy:
@@ -95,4 +94,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
         with:
-          path: ./out_temp
+          path: ./out_deploy
