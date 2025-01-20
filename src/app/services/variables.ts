@@ -41,14 +41,6 @@ export const PLANES: PlanesInt[] = [
   },
   {
     id: 5,
-    title: "Cuidados Paliativos Personalizados",
-    description: "Atención enfocada en mejorar la calidad de vida en situaciones críticas.",
-    features: ["4 horas", "Acompañamiento emocional", "Asistencia en actividades básicas", "Supervisión de medicamentos", "Apoyo psicológico para el adulto mayor", "Guía para familiares"],
-    cost: "$1,200.00/sesión",
-    duration: 4,
-  },
-  {
-    id: 6,
     title: "Educación y Sensibilización a Familiares",
     description: "Sesión breve para orientar y capacitar a familiares en el cuidado del adulto mayor.",
     features: ["1 hora", "Técnicas básicas de cuidado", "Gestión del estrés familiar", "Reconocimiento de señales de alarma", "Comunicación efectiva", "Recomendaciones prácticas"],
@@ -56,19 +48,11 @@ export const PLANES: PlanesInt[] = [
     duration: 1,
   },
   {
-    id: 7,
+    id: 6,
     title: "Programa de Prevención",
     description: "Sesión dedicada a fomentar hábitos y actividades preventivas para el bienestar general.",
     features: ["2 horas", "Evaluación inicial", "Diseño de rutinas personalizadas", "Recomendaciones alimenticias", "Actividades de socialización", "Monitoreo de progreso"],
     cost: "$850.00/sesión",
     duration: 2,
-  },
-  {
-    id: 8,
-    title: "Terapia Integral Extendida",
-    description: "Sesión completa para trabajar múltiples aspectos del bienestar físico y emocional.",
-    features: ["6 horas", "Plan integral físico y cognitivo", "Técnicas avanzadas de relajación", "Actividades recreativas personalizadas", "Supervisión médica", "Reporte detallado"],
-    cost: "$1,500.00/sesión",
-    duration: 6,
-  },
+  }
 ];
