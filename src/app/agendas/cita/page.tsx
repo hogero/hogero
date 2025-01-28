@@ -164,6 +164,10 @@ const AgendarCita = () => {
     setSelectedDate(null);
   }
 
+  const excludeSpecificDates = (date: Date) => {
+    return date.getDay() !== 0;
+  };
+
   return (<>
     {loading.loading ?
       <Spinner message={loading.message} /> :
@@ -238,8 +242,9 @@ const AgendarCita = () => {
               minTime={setHours(0, 9)} // Hora mínima: 09:00
               maxTime={setHours(0, 17)}
               excludeTimes={getExcludedTimes(selectedDate)}
-              minDate={todayToNDays(1)}
+              minDate={todayToNDays(5)}
               className={styles.label}
+              filterDate={excludeSpecificDates}
             />
             {errors.fechaInicio && <p className={styles.error}>{errors.fechaInicio}</p>}
           </div>
