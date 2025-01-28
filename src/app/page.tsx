@@ -19,7 +19,7 @@ const Inicio = () => {
         <p>
           En HOGERO, llevamos nuestros servicios hasta tu hogar para
           realizar planes personalizados gerontológicos que ayudarán a mejorar tu calidad de vida. 
-          <Link href="/agendas/cita" className={styles.link}> Agenda tu cita</Link>
+          <Link href="/servicios" className={styles.link}> Revisa nuestros servicios</Link>
 
         </p>
       </section>

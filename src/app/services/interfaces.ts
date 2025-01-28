@@ -27,4 +27,5 @@ export interface PlanesInt {
     features: string[];
     cost: string;
     duration: number;
+    noAgenda?: boolean; 
 }

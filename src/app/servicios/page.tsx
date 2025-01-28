@@ -8,9 +8,10 @@ const Servicios = () => {
 
     <section className={styles.planesSection}>
       <h2 className={styles.title}>Nuestros Servicios</h2>
+      <p>Agenda seleccionando alguno de nuestros servicios</p>
       <div className={styles.planesContainer}>
         {PLANES.map((plan, index) => (
-          <Link key={index} href={`/agendas/cita?sesionId=${plan.id}`} style={{ textDecoration: "none" }}>
+          <Link key={index} href={!plan.noAgenda ? `/agendas/cita?sesionId=${plan.id}` : `/servicios`} style={{ textDecoration: "none" }}>
             <div className={styles.planCard} >
               <h3 className={styles.planTitle}>{plan.title}</h3>
               <p className={styles.planDescription}>{plan.description}</p>

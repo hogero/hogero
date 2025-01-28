@@ -203,7 +203,7 @@ const AgendarCita = () => {
               onChange={handleChange}
               maxLength={10}
               className={styles.input}
-              placeholder="1234567890"
+              placeholder="5511223344"
             />
             {errors.telefono && <p className={styles.error}>{errors.telefono}</p>}
           </div>
@@ -252,7 +252,7 @@ const AgendarCita = () => {
               className={styles.select}
             >
               <option value={0}>--Selecciona la sesión--</option>
-              {PLANES.map((plan, index) => (<option key={index} value={plan.id}>{plan.title}</option>))}
+              {PLANES.map((plan, index) => (!plan.noAgenda && <option key={index} value={plan.id}>{plan.title}</option>))}
             </select>
             {errors.duracion && <p className={styles.error}>{errors.duracion}</p>}
           </div>
