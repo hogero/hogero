@@ -5,6 +5,7 @@ export const API_GEN = isProduction
   ? "https://hogeroserver-production.up.railway.app"
   : "http://localhost:4000";
 export const whatsappNumber = "+527297512152";
+export const whatsappNumber2 = "7297512152";
 export const defaultMessage = "Hola, quiero más información sobre los servicios.";
 export const emailSubject = "Consulta sobre servicios de gerontología";
 export const emailHogero = "hogerohome@gmail.com";

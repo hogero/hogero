@@ -1,21 +1,27 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import styles from "../styles/navbar.module.css";
 import { LINKS } from "../services/variables";
+import { usePathname } from "next/navigation";
 
 const Navbar: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const pathname = usePathname(); // Obtiene la ruta actual
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
 
+    useEffect(() => {
+        setIsOpen(false);
+    }, [pathname]);
+
     return (
         <header>
             <nav className={styles.navbar}>
                 <div className={styles.navbarContainer}>
-                    <Link href={"/"} className={styles.logo} onClick={_=>setIsOpen(false)}>
+                    <Link href={"/"} className={styles.logo} onClick={_ => setIsOpen(false)}>
                         <img src="/hogero/LogoHogero.svg" alt="logo" />
                         HOGERO
                     </Link>

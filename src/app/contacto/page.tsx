@@ -1,4 +1,4 @@
-import { defaultMessage, emailHogero, emailSubject, whatsappNumber } from '../services/variables';
+import { defaultMessage, emailHogero, emailSubject, whatsappNumber, whatsappNumber2 } from '../services/variables';
 import styles from '../styles/contacto.module.css';
 
 const Contactanos = () => {
@@ -11,7 +11,7 @@ const Contactanos = () => {
             <div className={styles.contactOptions}>
                 <div className={styles.contactOption}>
                     <h2>WhatsApp</h2>
-                    <p>Envíanos un mensaje directo a nuestro número de WhatsApp.</p>
+                    <p>Envíanos un mensaje directo a nuestro número de WhatsApp {whatsappNumber2}</p>
                     <a
                         href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(defaultMessage)}`}
                         target="_blank"
@@ -23,7 +23,7 @@ const Contactanos = () => {
                 </div>
                 <div className={styles.contactOption}>
                     <h2>Correo Electrónico</h2>
-                    <p>Envíanos un correo electrónico con tus preguntas o solicitudes.</p>
+                    <p>Envíanos un correo electrónico con tus preguntas o solicitudes a {emailHogero}.</p>
                     <a href={`mailto:${emailHogero}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(defaultMessage)}`}
                         target="_blank"
                         rel="noopener noreferrer"
