@@ -3,10 +3,20 @@ import styles from "./inicio.module.css";
 import Link from "next/link";
 
 const Inicio = () => {
-  const servicios = [
+  const EDUCACION = [
     "Licenciatura en Gerontología por Universidad Estatal del Valle de Ecatepec.",
     "Diplomado en medicina geriátrica por el Instituto Nacional de Geriatría.",
     "Diplomado en atención primaria en personas con demencia por el Instituto Nacional de Geriatría.",
+  ];
+
+  const CAPACITACIONES = [
+    "Aplicación de programas individuales de actividad física multicomponente para personas mayores.",
+    "Manejo Inicial de factores de riesgo de discapacidad en personas mayores.",
+    "Evaluación de la capacidad funcional de personas mayores.",
+    "Apoyo en la orientación alimentaria para personas mayores.",
+    "Brindar apoyo de orientación a cuidadores informales de personas mayores.",
+    "Aplicación de programa individual de estimulación cognitiva para personas mayores.",
+    "Impartición de cursos de formación de capital humano presencial grupal."
   ];
 
   return (
@@ -14,12 +24,12 @@ const Inicio = () => {
       {/* Frase Representativa */}
       <section className={styles.frase}>
         <h1>
-          Cuidar del presente, es asegurar la dignidad del futuro.
+          Gerontología a la puerta de tu casa
         </h1>
         <p>
           En HOGERO, llevamos nuestros servicios hasta tu hogar para
-          realizar planes personalizados gerontológicos que ayudarán a mejorar tu calidad de vida. 
-          <Link href="/servicios" className={styles.link}> Revisa nuestros servicios</Link>
+          realizar planes personalizados gerontológicos que ayudarán a mejorar tu calidad de vida.
+          <Link href="/servicios" className={styles.link}> Ver los servicios disponibles</Link>
 
         </p>
       </section>
@@ -55,7 +65,7 @@ const Inicio = () => {
             <div>
               <h3>Karla Itzel Ramos Romero</h3>
               <p className={styles.subtext}>
-                Lic. en Gerontología con tres años de experiencia. 
+                Lic. en Gerontología con tres años de experiencia.
                 Estoy dedicada a proporcionar atención integral y de
                 calidad a personas mayores, adaptando mis habilidades a sus
                 necesidades individuales para mejorar su bienestar y calidad de
@@ -63,13 +73,23 @@ const Inicio = () => {
               </p>
             </div>
           </div>
-          <div className={styles.body}>
-            <h4>Educación y Certificaciones</h4>
-            <ul>
-              {servicios.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
+          <div className={`${styles.education}`}>
+            <div>
+              <h4>Educación</h4>
+              <ul>
+                {EDUCACION.map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4>Capacitaciones</h4>
+              <ul>
+                {CAPACITACIONES.map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>

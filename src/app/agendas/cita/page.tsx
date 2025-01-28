@@ -13,6 +13,7 @@ import styles from "../../styles/agendas.module.css";
 import Agenda from "@/app/components/Agenda";
 import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 
 const AgendarCita = () => {
   const searchParams = useSearchParams();
@@ -22,7 +23,7 @@ const AgendarCita = () => {
   const initAgenda: AgendasInt = {
     direccion: "", duracion: auxPlan?.duration ?? 0, planId, email: "", fechaFin: "", fechaInicio: "", nombre: "", telefono: ""
   }
-  
+
   const [loading, setLoading] = useState<LoadingData>({ loading: false });
   const [agenda, setAgenda] = useState<AgendasInt>({ ...initAgenda });
   const [agendaId, setAgendaId] = useState<string>("");
@@ -107,7 +108,7 @@ const AgendarCita = () => {
     }
 
     if (agenda.duracion == 0) {
-      newErrors.duracion = "La sesión es obligatoria.";
+      newErrors.duracion = "El Servicio es obligatoria.";
     }
 
     if (!agenda.fechaInicio) {
@@ -126,7 +127,7 @@ const AgendarCita = () => {
       const numericValue = value.replace(/[^0-9]/g, "");
       setAgenda({ ...agenda, [name]: numericValue });
     } else if (name === "duracion") {
-      const pl = PLANES.find(p => p.id == Number(value)) ?? {duration:0,title:""};
+      const pl = PLANES.find(p => p.id == Number(value)) ?? { duration: 0, title: "" };
       setAgenda({ ...agenda, [name]: pl.duration, planData: pl as any, planId: value });
     } else {
       setAgenda({ ...agenda, [name]: value });
@@ -244,14 +245,17 @@ const AgendarCita = () => {
           </div>
 
           <div className={styles.formGroup}>
-            <label className={styles.label}>Sesión</label>
+            <label className={styles.label}>
+              <span>Servicio</span>
+              <Link href="/servicios" target="_blank" className={styles.servicesInfo}>Ver información</Link>
+            </label>
             <select
               name="duracion"
               value={agenda.planId}
               onChange={handleChange}
               className={styles.select}
             >
-              <option value={0}>--Selecciona la sesión--</option>
+              <option value={0}>--Selecciona el Servicio--</option>
               {PLANES.map((plan, index) => (!plan.noAgenda && <option key={index} value={plan.id}>{plan.title}</option>))}
             </select>
             {errors.duracion && <p className={styles.error}>{errors.duracion}</p>}

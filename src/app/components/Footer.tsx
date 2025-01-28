@@ -1,7 +1,7 @@
 import { AiOutlineMail, AiOutlineWhatsApp } from 'react-icons/ai';
 import styles from '../styles/footer.module.css'; // Importar el módulo CSS
 import { defaultMessage, emailHogero, emailSubject, whatsappNumber } from '../services/variables';
-import { FaCalendarAlt } from 'react-icons/fa';
+import { FaCalendarAlt, FaHandsHelping } from 'react-icons/fa';
 import Link from 'next/link';
 
 const Footer = () => {

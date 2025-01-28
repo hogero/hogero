@@ -17,6 +17,20 @@
     margin-bottom: 20px;
 }
 
+.servicesInfo {
+    color: var(--main-color);
+    position: relative;
+    bottom: 5px;
+    left: 5px;
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.servicesInfo:hover {
+    font-weight: 600;
+}
+
 .label {
     display: block;
     margin-bottom: 5px;

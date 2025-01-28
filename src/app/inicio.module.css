@@ -82,23 +82,28 @@
     color: var(--text-muted);
 }
 
-.body {
+.education {
     text-align: left;
+    /* display: grid;
+    grid-template-columns: 1fr 1fr; */
+    display: flex;
+
 }
 
-.body h4 {
+.education h4 {
     font-size: 1.2rem;
     color: var(--last-color);
     margin-bottom: 0.5rem;
 }
 
-.body ul li {
+.education ul li {
     margin-bottom: 0.5rem;
     position: relative;
     padding-left: 1.2rem;
+    list-style: none;
 }
 
-.body ul li::before {
+.education ul li::before {
     content: "✔";
     color: var(--primary);
     position: absolute;
@@ -115,5 +120,8 @@
     .photo {
         width: 150px;
         height: 150px;
+    }
+    .education{
+        flex-direction: column;
     }
 }

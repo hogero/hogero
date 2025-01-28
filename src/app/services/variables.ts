@@ -11,13 +11,42 @@ export const emailHogero = "hogerohome@gmail.com";
 export const URL_GP = isProduction
   ? "https://hogero.github.io/hogero"
   : "http://localhost:3000";
+
+export const LINKS = [
+  {
+    name: "Inicio",
+    href: "/",
+    icon: ""
+  },
+  {
+    name: "Servicios",
+    href: "/servicios",
+    icon: ""
+  },
+  {
+    name: "Agendar cita",
+    href: "/agendas/cita",
+    icon: ""
+  },
+  {
+    name: "Consultar cita",
+    href: "/agendas",
+    icon: ""
+  },
+  {
+    name: "Contactanos",
+    href: "/contacto",
+    icon: ""
+  }
+];
+
 export const PLANES: PlanesInt[] = [
   {
     id: 1,
     title: "Evaluación Inicial",
     description: "Diseñada para evaluar necesidades y factores de riesgo de la persona mayor como el motivo de consulta. Imperativa como primera sesión para conocer al paciente.",
     features: ["2 horas", "Entrevista inicial e historia de vida", "Evaluación integral", "Detección de factores de riesgo"],
-    cost: "$850.00/sesión",
+    cost: "$700.00/sesión",
     duration: 2,
   },
   {
@@ -32,8 +61,8 @@ export const PLANES: PlanesInt[] = [
     id: 3,
     title: "Actividad Física",
     description: "Diseñada en mantener y mejorar la capacidad física de la persona mayor.",
-    features: ["1 hora","Técnicas de respiración y relajación", "Ejercicios de fuerza, equilibrio, flexibilidad y coordinación", "Terapia ocupacional", "Actividades lúdicas"],
-    cost: "$650.00/sesión",
+    features: ["1 hora", "Técnicas de respiración y relajación", "Ejercicios de fuerza, equilibrio, flexibilidad y coordinación", "Terapia ocupacional", "Actividades lúdicas"],
+    cost: "$550.00/sesión",
     duration: 1,
   },
   {
@@ -41,7 +70,7 @@ export const PLANES: PlanesInt[] = [
     title: "Apoyo a cuidadores y familiares",
     description: "Diseñada para el autocuidado de las personas que cuidan a la persona mayor promoviendo un entorno equilibrado y saludable para todos.",
     features: ["2 horas", "Entrevista con el cuidador/familiar", "Evaluación de sobrecarga", "Evaluación de ansiedad y depresión", "Comunicación asertiva", "Reconocimiento de señales de alarma"],
-    cost: "$750.00/sesión",
+    cost: "$700.00/sesión",
     duration: 2,
   },
   {
