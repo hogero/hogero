@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
             <nav className={styles.navbar}>
                 <div className={styles.navbarContainer}>
                     <Link href={"/"} className={styles.logo} onClick={_ => setIsOpen(false)}>
-                        <img src="/hogero/LogoHogeroWh.png" alt="logo" />
+                        <img src="/hogero/LogoHogeroWh.png`" alt="logo" />
                         HOGERO
                     </Link>
                     <button className={styles.menuToggle} onClick={toggleMenu}>
