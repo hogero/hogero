@@ -242,7 +242,7 @@ const AgendarCita = () => {
               minTime={setHours(0, 9)} // Hora mínima: 09:00
               maxTime={setHours(0, 17)}
               excludeTimes={getExcludedTimes(selectedDate)}
-              minDate={todayToNDays(5)}
+              minDate={todayToNDays(1)}
               className={styles.label}
               filterDate={excludeSpecificDates}
             />
