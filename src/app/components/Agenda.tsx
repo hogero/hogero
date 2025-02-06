@@ -15,7 +15,7 @@ export default function Agenda(props: { agenda: AgendasInt, isNew?: boolean, age
         <div className={styles.container}>
             <h2 className={styles.title}>Número de Cita {agendaId}</h2>
             <div className={styles.info}>
-                <p><strong>Servicio:</strong> {planData?.title}</p>
+                <p><strong>Servicio:</strong> {planData?.title} - {planData.cost}</p>
                 <p><strong>Nombre:</strong> {agenda.nombre}</p>
                 <p><strong>Teléfono:</strong> {agenda.telefono}</p>
                 <p><strong>Email:</strong> {agenda.email}</p>
@@ -43,6 +43,9 @@ export default function Agenda(props: { agenda: AgendasInt, isNew?: boolean, age
                     </li>
                     <li>
                         <strong>Concepto:</strong> {agendaId}
+                    </li>
+                    <li>
+                        <strong>Monto:</strong> {planData.cost}
                     </li>
                 </ul>
                 <p>
