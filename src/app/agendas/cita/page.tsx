@@ -2,8 +2,8 @@
 import { forwardRef, useEffect, useState } from "react";
 import { DataService } from "../../services/getData.services";
 import { Spinner } from '../../components/Spinner';
-import { API_GEN, PLANES } from "../../services/variables";
-import { AgendasInt, DictT, LoadingData } from '../../services/interfaces';
+import { API_GEN } from "../../services/variables";
+import { AgendasInt, DictT, LoadingData, PlanesInt } from '../../services/interfaces';
 import { showToast, todayToNDays } from "../../services/utils";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -19,9 +19,9 @@ const AgendarCita = () => {
   const searchParams = useSearchParams();
   const dataService = new DataService();
   const planId = searchParams.get("sesionId") ?? "0"
-  const auxPlan = PLANES.find(p => p.id == Number(planId));
+  const [planes, setPlanes] = useState<PlanesInt[]>([]);
   const initAgenda: AgendasInt = {
-    direccion: "", duracion: auxPlan?.duration ?? 0, planId, email: "", fechaFin: "", fechaInicio: "", nombre: "", telefono: ""
+    direccion: "", duracion: 0, planId, email: "", fechaFin: "", fechaInicio: "", nombre: "", telefono: ""
   }
 
   const [loading, setLoading] = useState<LoadingData>({ loading: false });
@@ -30,9 +30,15 @@ const AgendarCita = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [excludeDates, setExcludeDates] = useState<DictT<Date[]>>({});
 
+  const auxPlan = planes.find(p => p.id == Number(planId));
+
   useEffect(() => {
     const dataFetch = async () => {
       setLoading({ loading: true, message: "Obteniendo agendas disponibles" });
+      const dtPln = await dataService.getPlanes();
+      const auxPlan = dtPln.find(p => p.id == Number(planId));
+      setAgenda({ ...agenda, duracion: auxPlan?.duration ?? 0, planData: auxPlan })
+      setPlanes(dtPln);
       await updateAgendas();
       setLoading({ loading: false });
     }
@@ -127,7 +133,7 @@ const AgendarCita = () => {
       const numericValue = value.replace(/[^0-9]/g, "");
       setAgenda({ ...agenda, [name]: numericValue });
     } else if (name === "duracion") {
-      const pl = PLANES.find(p => p.id == Number(value)) ?? { duration: 0, title: "" };
+      const pl = planes.find(p => p.id == Number(value)) ?? { duration: 0, title: "" };
       setAgenda({ ...agenda, [name]: pl.duration, planData: pl as any, planId: value });
     } else {
       setAgenda({ ...agenda, [name]: value });
@@ -239,7 +245,7 @@ const AgendarCita = () => {
               placeholderText="Selecciona una fecha y hora"
               customInput={<CustomInput />}
               timeCaption="Hora"
-              minTime={setHours(0, 9)} // Hora mínima: 09:00
+              minTime={setHours(0, 11)} // Hora mínima: 09:00
               maxTime={setHours(0, 17)}
               excludeTimes={getExcludedTimes(selectedDate)}
               minDate={todayToNDays(1)}
@@ -261,7 +267,7 @@ const AgendarCita = () => {
               className={styles.select}
             >
               <option value={0}>--Selecciona el Servicio--</option>
-              {PLANES.map((plan, index) => (!plan.noAgenda && <option key={index} value={plan.id}>{plan.title}</option>))}
+              {planes.map((plan, index) => (!plan.noAgenda && <option key={index} value={plan.id}>{plan.title}</option>))}
             </select>
             {errors.duracion && <p className={styles.error}>{errors.duracion}</p>}
           </div>

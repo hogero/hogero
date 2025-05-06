@@ -1,4 +1,6 @@
+import { PlanesInt } from "./interfaces";
 import { getJSON } from "./utils";
+import { API_GEN } from "./variables";
 
 export interface ResponseInterface<T = any> {
   url: string;
@@ -74,6 +76,14 @@ export class DataService {
       resReq.error = error
     }
     return resReq;
+  }
+
+  async getPlanes():Promise<PlanesInt[]>{
+    const req = await this.requestGet(`${API_GEN}/services`);
+    if(req.ok){
+      return req.data;
+    }
+    return [];
   }
 
 }
