@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Modal from 'react-modal';
 import styles from "../styles/pdfmodal.module.css";
-import { URL_AX, URL_GP } from "../services/variables";
+import { URL_AX } from "../services/variables";
 
 export const PDFModal = (props: { link: string }) => {
     const { link } = props;
@@ -23,7 +23,7 @@ export const PDFModal = (props: { link: string }) => {
                 <button onClick={closeModal} className={styles.close}>X</button>
                 {/* <embed src={link} className={styles.embed} /> */}
                 <iframe
-                    src={`https://docs.google.com/gview?url=${encodeURIComponent(URL_AX+link)}&embedded=true`}
+                    src={`https://docs.google.com/gview?url=${encodeURIComponent(URL_AX + link)}&embedded=true`}
                     style={{ width: '80vw', height: '80vh' }}
                     frameBorder="0"
                 ></iframe>
