@@ -9,7 +9,7 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 0;
   box-sizing: border-box;
   box-shadow: 0 4px 8px #00000095;
   width: 100%;

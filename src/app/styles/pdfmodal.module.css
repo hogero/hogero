@@ -1,0 +1,55 @@
+.info {
+    color: #3c6a92;
+    position: relative;
+    bottom: 5px;
+    left: 5px;
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    background: transparent;
+    border: none;
+}
+
+.info:hover {
+    font-weight: 600;
+}
+
+.modal {
+    position: relative;
+    z-index: 1050;
+    background: white;
+    width: fit-content;
+    height: fit-content;
+    margin: 5% auto;
+    padding: 18px;
+    border-radius: 8px;
+    box-shadow: 3px 5px 8px -4px;
+}
+
+.close {
+    color: var(--neutral-dark);
+    background-color: transparent;
+    border: none;
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.close:hover {
+    font-weight: 600;
+}
+
+.embed {
+    width: 80vw;
+    height: 80vh;
+}
+
+.bb {
+    position: fixed;
+    inset: 0;
+    background-color: transparent;
+    z-index: -1;
+}

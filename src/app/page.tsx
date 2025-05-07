@@ -1,12 +1,13 @@
 import React from "react";
 import styles from "./inicio.module.css";
 import Link from "next/link";
+import { PDFModal } from "./components/PDFModal";
 
 const Inicio = () => {
   const EDUCACION = [
-    "Licenciatura en Gerontología por Universidad Estatal del Valle de Ecatepec.",
-    "Diplomado en medicina geriátrica por el Instituto Nacional de Geriatría.",
-    "Diplomado en atención primaria en personas con demencia por el Instituto Nacional de Geriatría.",
+    { title: "Licenciatura en Gerontología por Universidad Estatal del Valle de Ecatepec.", pdf: "/hogero/Titulo_KIRR.pdf" },
+    { title: "Diplomado en medicina geriátrica por el Instituto Nacional de Geriatría.", pdf: "/hogero/Diplomado_MedicinaGeriatrica_KIRR.pdf" },
+    { title: "Diplomado en atención primaria en personas con demencia por el Instituto Nacional de Geriatría.", pdf: "/hogero/Diplomado_AtencionPrimaria_KIRR.pdf" }
   ];
 
   const CAPACITACIONES = [
@@ -78,7 +79,10 @@ const Inicio = () => {
               <h4>Educación</h4>
               <ul>
                 {EDUCACION.map((item, index) => (
-                  <li key={index}>{item}</li>
+                  <li key={index}>
+                    {item.title}
+                    <PDFModal link={item.pdf}/>
+                  </li>
                 ))}
               </ul>
             </div>
