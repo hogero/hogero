@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Modal from 'react-modal';
 import styles from "../styles/pdfmodal.module.css";
+import stylesModal from "../styles/modals.module.css";
 import { URL_AX } from "../services/variables";
 
 export const PDFModal = (props: { link: string }) => {
@@ -20,8 +21,7 @@ export const PDFModal = (props: { link: string }) => {
         <Modal isOpen={modalIsOpen} className={styles.modal} ariaHideApp={false}>
             <div className={styles.bb} onClick={closeModal}></div>
             <div onClick={e => { e.stopPropagation() }}>
-                <button onClick={closeModal} className={styles.close}>X</button>
-                {/* <embed src={link} className={styles.embed} /> */}
+                <button onClick={closeModal} className={stylesModal.close}>X</button>
                 <iframe
                     src={`https://docs.google.com/gview?url=${encodeURIComponent(URL_AX + link)}&embedded=true`}
                     style={{ width: '80vw', height: '80vh' }}

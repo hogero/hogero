@@ -6,6 +6,7 @@ import ToastProvider from "./components/ToastProvider";
 import { Suspense } from "react";
 import Seo from "./components/Seo";
 import Footer from "./components/Footer";
+import AvisoPrivacidad from "./components/AvisoPrivacidad";
 
 
 export default function RootLayout({

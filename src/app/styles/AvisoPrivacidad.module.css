@@ -1,0 +1,80 @@
+/* ---- CSS MODULE (AvisoPrivacidad.module.css) ---- */
+/* Ejemplo de estilos, puedes ajustar colores y tipografía */
+.wrapper {
+  max-width: 900px;
+  margin: 28px auto;
+  padding: 20px;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 6px 20px rgba(2, 6, 23, 0.6);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.meta {
+  font-size: 13px;
+  color: #9ca3af;
+  margin-top: 4px;
+}
+
+.badge {
+  background: rgba(30, 112, 27, 0.12);
+  color: #7ea062;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.summary {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.toggle {
+  margin-left: auto;
+  color: #9ca3af;
+  font-size: 13px;
+}
+
+.content p { line-height: 1.5; margin: 10px 0; }
+.content ul { margin: 8px 0 16px 20px; color: #9ca3af; }
+
+.note {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.btn {
+  border: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.03);
+  color: inherit;
+  transition: transform 0.08s ease, background 0.12s ease;
+}
+
+.btn:active { transform: translateY(1px); }
+.primary { background: linear-gradient(90deg, #06b6d4, #8b5cf6); color: #001217; }
+.ghost { border: 1px solid rgba(255, 255, 255, 0.06); }
