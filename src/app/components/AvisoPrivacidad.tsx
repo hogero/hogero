@@ -85,8 +85,8 @@ export default function AvisoPrivacidad() {
                     <p>
                         Nos reservamos el derecho de modificar o actualizar este Aviso de
                         Privacidad en cualquier momento. Dichas modificaciones se harán
-                        públicas a través de nuestra página web:
-                        <a href={`${URL_GP}/hogero`}>[{URL_GP}/hogero]</a>.
+                        públicas a través de nuestra página web: 
+                        <a href={`${URL_GP}`}>{URL_GP}</a>.
                     </p>
 
                     <p className={styles.note}>
