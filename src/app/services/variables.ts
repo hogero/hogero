@@ -11,7 +11,7 @@ export const emailSubject = "Consulta sobre servicios de gerontología";
 export const emailHogero = "hogerohome@gmail.com";
 export const URL_GP = isProduction
   ? "https://hogero.github.io/hogero"
-  : "http://localhost:3000";
+  : "http://localhost:3000/hogero";
 
 export const URL_AX = "https://hogero.github.io/";
 
