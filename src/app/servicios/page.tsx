@@ -4,7 +4,7 @@ import styles from "../styles/planes.module.css";
 import Link from "next/link";
 import { LoadingData, PlanesInt } from "../services/interfaces";
 import { DataService } from "../services/getData.services";
-import { API_GEN } from "../services/variables";
+import { API_GEN, whatsappNumber } from "../services/variables";
 import { Spinner } from "../components/Spinner";
 
 const Servicios = () => {
@@ -30,7 +30,7 @@ const Servicios = () => {
         <Spinner message={loading.message} /> :
         <div className={styles.planesContainer}>
           {planes.map((plan, index) => (
-            <Link key={index} href={!plan.noAgenda ? `/agendas/cita?sesionId=${plan.id}` : `/servicios`} style={{ textDecoration: "none" }}>
+            <Link key={index} href={!plan.noAgenda ? `/agendas/cita?sesionId=${plan.id}` : `tel:${whatsappNumber}`} style={{ textDecoration: "none" }}>
               <div className={styles.planCard} >
                 <h3 className={styles.planTitle}>{plan.title}</h3>
                 <p className={styles.planDescription}>{plan.description}</p>
