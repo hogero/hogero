@@ -71,7 +71,7 @@ export default function AvisoPrivacidad() {
                         Usted tiene derecho a acceder, rectificar, cancelar u oponerse al
                         uso de sus datos personales. Para ejercer cualquiera de estos
                         derechos, puede enviar una solicitud al correo electrónico:
-                        <a href={`mailto:[${emailHogero}]`}>[{emailHogero}]</a>
+                        <a href={`mailto:[${emailHogero}]`}>{emailHogero}</a>
                     </p>
 
                     <h3>5. Uso de cookies y tecnologías similares</h3>

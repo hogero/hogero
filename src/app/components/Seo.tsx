@@ -11,7 +11,7 @@ interface LayoutProps {
 const Seo: React.FC<LayoutProps> = ({
   title = "HOGERO",
   description = "HOGERO ofrece servicios gerontológicos a domicilio en manos de Karla Itzel Ramos Romero. Agenda tu cita fácilmente a través de nuestro sitio web.",
-  image = `${URL_GP}/LogoHogeroLT.svg`,
+  image = `${URL_GP}/LogoHogeroLT.png`,
   url = URL_GP,
 }) => {
   return (
