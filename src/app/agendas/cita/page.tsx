@@ -30,8 +30,6 @@ const AgendarCita = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [excludeDates, setExcludeDates] = useState<DictT<Date[]>>({});
 
-  const auxPlan = planes.find(p => p.id == Number(planId));
-
   useEffect(() => {
     const dataFetch = async () => {
       setLoading({ loading: true, message: "Obteniendo agendas disponibles" });
@@ -147,15 +145,15 @@ const AgendarCita = () => {
       const reqAgendas = await dataService.requestPost(`${API_GEN}/agenda`, agenda);
       if (reqAgendas.ok) {
         await updateAgendas();
-        showToast("Agenda generada correctamente", "success");
+        showToast("Agenda generada correctamente, revisa tu correo!", "success");
         setAgendaId(reqAgendas.data.agendaId);
-        const link = document.createElement("a");
+       /*  const link = document.createElement("a");
         link.href = `/hogero/agendas?agendaId=${reqAgendas.data.agendaId}`;
         link.target = "_blank";
         link.rel = "noopener noreferrer";
         document.body.appendChild(link);
         link.click();
-        document.body.removeChild(link);
+        document.body.removeChild(link); */
       } else {
         await updateAgendas();
         showToast(reqAgendas.error?.message, "error");
@@ -166,7 +164,7 @@ const AgendarCita = () => {
 
   const handleNewAgenda = () => {
     setAgendaId("")
-    setAgenda({ ...initAgenda });
+    setAgenda({ ...initAgenda, planId: "0" });
     setSelectedDate(null);
   }
 

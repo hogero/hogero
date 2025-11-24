@@ -39,7 +39,7 @@ const Servicios = () => {
                     <li key={index} className={styles.featureItem}>{feature}</li>
                   ))}
                 </ul>
-                <div className={styles.cost}>{plan.cost}</div>
+                <div className={styles.cost}>${plan.cost.toFixed(2)}</div>
               </div>
             </Link>
           ))}
