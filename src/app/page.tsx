@@ -70,7 +70,8 @@ const Inicio = () => {
                 Estoy dedicada a proporcionar atención integral y de
                 calidad a personas mayores, adaptando mis habilidades a sus
                 necesidades individuales para mejorar su bienestar y calidad de
-                vida. 
+                vida.
+                <br/> 
                 <b>Cédula Profesional 15370322.</b>
               </p>
             </div>
