@@ -5,7 +5,7 @@ import { PDFModal } from "./components/PDFModal";
 
 const Inicio = () => {
   const EDUCACION = [
-    { title: "Licenciatura en Gerontología por Universidad Estatal del Valle de Ecatepec.", pdf: "/hogero/Titulo_KIRR.pdf" },
+    { title: "Licenciatura en Gerontología por Universidad Estatal del Valle de Ecatepec. ()", pdf: "/hogero/Cedula_KIRR.pdf" },
     { title: "Diplomado en medicina geriátrica por el Instituto Nacional de Geriatría.", pdf: "/hogero/Diplomado_MedicinaGeriatrica_KIRR.pdf" },
     { title: "Diplomado en atención primaria en personas con demencia por el Instituto Nacional de Geriatría.", pdf: "/hogero/Diplomado_AtencionPrimaria_KIRR.pdf" }
   ];
@@ -64,13 +64,14 @@ const Inicio = () => {
               className={styles.photo}
             />
             <div>
-              <h3>Karla Itzel Ramos Romero</h3>
+              <h3>Lic. Karla Itzel Ramos Romero</h3>
               <p className={styles.subtext}>
                 Lic. en Gerontología con tres años de experiencia.
                 Estoy dedicada a proporcionar atención integral y de
                 calidad a personas mayores, adaptando mis habilidades a sus
                 necesidades individuales para mejorar su bienestar y calidad de
-                vida
+                vida. 
+                <b>Cédula Profesional 15370322.</b>
               </p>
             </div>
           </div>
