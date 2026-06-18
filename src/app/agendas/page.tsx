@@ -70,7 +70,7 @@ const ConsultaCita = ()=> {
 
   const onChangeInput = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { value } = e.target;
-    const data = value.replace(/[^a-zA-Z0-9]/g, "").slice(0, 10);
+    const data = value.replace(/[^a-zA-Z0-9]/g, "").slice(0, 10).toUpperCase();
     setAgendaId(data);
   }
 
